@@ -27,8 +27,8 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            Window1 w1 = new Window1();
+           
+            Window1 w1 = new Window1(this);
             w1.Show();
         }
 

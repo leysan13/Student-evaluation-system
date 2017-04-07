@@ -51,9 +51,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             set { parol = value; }
         }
 
-        public Prepodavatel()
+        public Prepodavatel(string _fam, string _name, string _otch, string _predmet, string _log, string _parol )
         {
-
+            fam = _fam;
+            name = _name;
+            otch = _otch;
+            predmet = _predmet;
+            log = _log;
+            parol = _parol;
         }
 
     }

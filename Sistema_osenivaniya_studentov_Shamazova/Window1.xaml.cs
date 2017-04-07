@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +21,41 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        MainWindow home;
+
+        public Window1(MainWindow _home)
         {
+            home = _home;
             InitializeComponent();
         }
+        ArrayList arj = new ArrayList();
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+            Prepodavatel pr;
+            pr = new Prepodavatel(Fam_Textbox.Text, textBox2.Text, textBox3.Text, Choose.Text, textBox4.Text, textBox5.Text);
+            arj.Add(pr);
+            using (StreamWriter sw = new StreamWriter("../../BazaD_Prepod.txt", true))
+            {
+                foreach (Prepodavatel p in arj)
+                    sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Fam, pr.Name, pr.Otch, pr.Predmet, pr.Log, pr.Parol);
+
+            }
+            arj.Clear();
+              
+            }
+            catch 
+            {
+
+                MessageBox.Show("Что-то пошло не так", "Ошибка", MessageBoxButton.OK);
+            }
+            MessageBox.Show("Регистрация прошла успешно!", "" , MessageBoxButton.OK);  
+        
+        Close();
 
         }
+
     }
 }
