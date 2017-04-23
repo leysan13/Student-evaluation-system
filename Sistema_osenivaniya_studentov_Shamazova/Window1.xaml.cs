@@ -21,41 +21,62 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     /// </summary>
     public partial class Window1 : Window
     {
-        MainWindow home;
 
-        public Window1(MainWindow _home)
+
+        public Window1()
         {
-            home = _home;
             InitializeComponent();
         }
         ArrayList arj = new ArrayList();
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
-            try
+
+            if ((Fam_Textbox.Text == "") || (textBox2.Text == "") || (textBox3.Text == "") || (Choose.Text == "") || (textBox4.Text == "") || (textBox5.Text == ""))
             {
-            Prepodavatel pr;
-            pr = new Prepodavatel(Fam_Textbox.Text, textBox2.Text, textBox3.Text, Choose.Text, textBox4.Text, textBox5.Text);
-            arj.Add(pr);
-            using (StreamWriter sw = new StreamWriter("../../BazaD_Prepod.txt", true))
-            {
-                foreach (Prepodavatel p in arj)
-                    sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Fam, pr.Name, pr.Otch, pr.Predmet, pr.Log, pr.Parol);
+                MessageBox.Show("Заполните все поля!", "", MessageBoxButton.OK);
 
             }
-            arj.Clear();
-              
-            }
-            catch 
-            {
 
-                MessageBox.Show("Что-то пошло не так", "Ошибка", MessageBoxButton.OK);
+            else
+            {
+               
+                Prepodavatel d = null;
+                string[] line = File.ReadAllLines("../../BazaD_Prepod.txt");
+                for (int i = 0; i < line.Length; i++)
+                {
+
+                    string[] mas = line[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    d = new Prepodavatel(mas[0], mas[1], mas[2], mas[3], mas[4], mas[5]);
+                    if (mas[4] == textBox4.Text)
+                    {
+                        arj.Add(d);
+                        MessageBox.Show("Введённый логин уже используется", "", MessageBoxButton.OK);
+                    }
+
+                }
+                if (arj.Count==0)
+                    {
+                        Prepodavatel pr;
+                        pr = new Prepodavatel(Fam_Textbox.Text, textBox2.Text, textBox3.Text, Choose.Text, textBox4.Text, textBox5.Text);
+                        arj.Add(pr);
+                        using (StreamWriter sw = new StreamWriter("../../BazaD_Prepod.txt", true))
+                            {
+                            foreach (Prepodavatel p in arj)
+                                sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Fam, pr.Name, pr.Otch, pr.Predmet, pr.Log, pr.Parol);
+
+                    }
+                    MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
+                    Close();
+                }
+                arj.Clear();
+
             }
-            MessageBox.Show("Регистрация прошла успешно!", "" , MessageBoxButton.OK);  
+        }
+            
         
-        Close();
+
 
         }
 
     }
-}

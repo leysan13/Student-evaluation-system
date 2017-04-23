@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
-    class Prepodavatel
+    public class Prepodavatel
     {
         private string fam;
 

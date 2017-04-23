@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="478">
+        Title="MainWindow" Height="350" Width="478" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="152,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="152,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
+        <TextBox x:Name="LoginText" HorizontalAlignment="Left" Height="25" Margin="152,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
+        <TextBox x:Name="PasswordText" HorizontalAlignment="Left" Height="25" Margin="152,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
         <Button x:Name="Login" Content="Войти" HorizontalAlignment="Left" Margin="152,125,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Login_Click"/>
         <Button x:Name="Register" Content="Регистрация" HorizontalAlignment="Left" Margin="152,181,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Register_Click"/>
         <Label Content="Логин:" HorizontalAlignment="Left" Height="25" Margin="71,51,0,0" VerticalAlignment="Top" Width="67" Cursor="None"/>
