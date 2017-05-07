@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
-    class Student
+    [Serializable]
+    class Studentp
     {
-        private string fam; //фамилия студента
+        private string sername; //фамилия студента
 
-        public string Fam
+        public string Sername
         {
-            get { return fam; }
-            set { fam = value; }
+            get { return sername; }
+            set { sername = value; }
         }
         private string name; //имя студента
 
@@ -22,12 +23,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return name; }
             set { name = value; }
         }
-        private string otch;//отчество студента
+        private string patronymic;//отчество студента
 
-        public string Otch
+        public string Patronymic
         {
-            get { return otch; }
-            set { otch = value; }
+            get { return patronymic; }
+            set { patronymic = value; }
         }
         private string group; //группа
 
@@ -39,13 +40,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         }
 
       
-        private int mark_pr; //оценка по программированию
+        private int mark; //оценка по программированию
 
-        public int Mark_pr
+        public int Mark
         {
-            get { return mark_pr; }
-            set { mark_pr = value; }
+            get { return mark; }
+            set { mark = value; }
         }
+
         /*   
           private int mark_economics; //оценка по экономике
 
@@ -61,27 +63,16 @@ namespace Sistema_osenivaniya_studentov_Shamazova
               get { return mark_matan; }
               set { mark_matan = value; }
           }*/
-        public Student(string _fam, string _name, string _otch, string _group, int _mark_pr)
+        public Studentp(string _sername, string _name, string _patronymic, string _group, int _mark)
         {
-            fam = _fam;
+            sername = _sername;
             name = _name;
-            otch = _otch;
+            patronymic = _patronymic;
             group = _group;
-            mark_pr = _mark_pr;
+            mark = _mark;
        //     mark_matan = _mark_matan;
           //  mark_economics = mark_ec;
         }
-
-       public string[] Show(Student st, string predmet)
-        {
-           
-            string[] mstr = new string[5];
-            mstr[0] = Fam;
-            mstr[1] = Name;
-            mstr[2] = Otch;
-            mstr[3] = Group;
-            mstr[4] = Mark_pr.ToString();
-            return mstr;
-        }
+       
     }
 }

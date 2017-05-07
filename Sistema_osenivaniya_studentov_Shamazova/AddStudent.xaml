@@ -1,0 +1,39 @@
+﻿<Window x:Class="Sistema_osenivaniya_studentov_Shamazova.AddStudent"
+Closing="W_Closing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
+        mc:Ignorable="d"
+        Title="AddStudent" Height="553.711" Width="393.686" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Информация о студенте" HorizontalAlignment="Left" Margin="25,35,0,0" VerticalAlignment="Top" Width="226" FontSize="16"/>
+        <TextBox x:Name="F" HorizontalAlignment="Left" Height="23" Margin="161,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="N" HorizontalAlignment="Left" Height="23" Margin="161,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="O" HorizontalAlignment="Left" Height="23" Margin="161,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox x:Name="M" HorizontalAlignment="Left" Height="23" Margin="303,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43"/>
+        <Label Content="Оценка по программированию:" HorizontalAlignment="Left" Margin="25,229,0,0" VerticalAlignment="Top"/>
+        <Label Content="Параметры доступа" HorizontalAlignment="Left" Margin="25,299,0,0" VerticalAlignment="Top" Width="185" FontSize="16"/>
+        <TextBox x:Name="L" HorizontalAlignment="Left" Height="23" Margin="108,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="P" HorizontalAlignment="Left" Height="23" Margin="108,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="29,377,0,0" VerticalAlignment="Top"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="225,454,0,0" VerticalAlignment="Top" Width="121" Height="24" Click="Button_Click"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="25,94,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="25,119,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="25,145,0,0" VerticalAlignment="Top"/>
+        <Label Content="Группа" HorizontalAlignment="Left" Margin="25,198,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="161,198,0,0" VerticalAlignment="Top" Width="185">
+            <TextBlock><Run Text="ББИ161"/></TextBlock>
+            <TextBlock><Run Text="ББИ162"/></TextBlock>
+            <TextBlock><Run Text="ББИ163"/></TextBlock>
+            <TextBlock><Run Text="ББИ164"/></TextBlock>
+            <TextBlock><Run Text="ББИ165"/></TextBlock>
+            <TextBlock><Run Text="ББИ166"/></TextBlock>
+            <TextBlock><Run Text="ББИ167"/></TextBlock>
+            <TextBlock><Run Text="ББИ168"/></TextBlock>
+        </ComboBox>
+
+    </Grid>
+</Window>

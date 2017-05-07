@@ -8,17 +8,9 @@
         Title="Window2" Height="634.124" Width="899.376" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Content="Показать" HorizontalAlignment="Left" Margin="102,192,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
-        <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="444,85,0,0" VerticalAlignment="Top" Height="457" Width="393">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Фамилия" Width="100"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Имя" Width="70"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Отчество" Width="105"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Группа" Width="65"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Оценка"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="444,85,0,0" VerticalAlignment="Top" Height="457" Width="393"/>
         <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="47,24,0,0" VerticalAlignment="Top" Width="790"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="111,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="22" Margin="102,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="102,156,0,0" VerticalAlignment="Top" Width="120">
             <TextBlock>ББИ161</TextBlock>
             <TextBlock>ББИ162</TextBlock>
@@ -30,5 +22,7 @@
             <TextBlock>ББИ168</TextBlock>
         </ComboBox>
         <Label Content="Группа" HorizontalAlignment="Left" Margin="102,125,0,0" VerticalAlignment="Top"/>
+        <Button Content="Добавить студента" HorizontalAlignment="Left" Margin="102,247,0,0" VerticalAlignment="Top" Width="120" Height="23" Click="Button_Click_1"/>
+        <Button Content="Удалить студента" HorizontalAlignment="Left" Margin="103,298,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click_2"/>
     </Grid>
 </Window>

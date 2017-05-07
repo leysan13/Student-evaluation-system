@@ -8,12 +8,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 {
     public class Prepodavatel
     {
-        private string fam;
+        private string sername;
 
-        public string Fam
+        public string Sername
         {
-            get { return fam; }
-            set { fam = value; }
+            get { return sername; }
+            set { sername = value; }
         }
         private string name;
 
@@ -22,12 +22,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return name; }
             set { name = value; }
         }
-        private string otch;
+        private string patronymic;
 
-        public string Otch
+        public string Patronymic
         {
-            get { return otch; }
-            set { otch = value; }
+            get { return patronymic; }
+            set { patronymic = value; }
         }
         private string predmet;
 
@@ -36,12 +36,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return predmet; }
             set { predmet = value; }
         }
-        private string log;
+        private string login;
 
-        public string Log
+        public string Login
         {
-            get { return log; }
-            set { log = value; }
+            get { return login; }
+            set { login = value; }
         }
         private string parol;
 
@@ -51,13 +51,13 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             set { parol = value; }
         }
 
-        public Prepodavatel(string _fam, string _name, string _otch, string _predmet, string _log, string _parol )
+        public Prepodavatel(string _sername, string _name, string _patronymic, string _predmet, string _login, string _parol )
         {
-            fam = _fam;
+            sername = _sername;
             name = _name;
-            otch = _otch;
+            patronymic = _patronymic;
             predmet = _predmet;
-            log = _log;
+            login = _login;
             parol = _parol;
         }
 

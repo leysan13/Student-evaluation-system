@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
@@ -26,32 +27,60 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             p = id;
             InitializeComponent();
-            Prepod.Content = p.Fam + " " + p.Name + " " + p.Otch + ".     " + p.Predmet +".";
+            Prepod.Content = p.Sername + " " + p.Name + " " + p.Patronymic + ".      " + p.Predmet +".";
 
         }
-        List<Student> arj = new List<Student>();
+        List<Studentp> arj = new List<Studentp>();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string[] line = File.ReadAllLines("../../base.txt");
-            for (int i = 0; i < line.Length; i++)
+            arj.Clear();
+            BinaryFormatter formatter = new BinaryFormatter();
+            List<Authorization> list;
+            using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
             {
-
-                string[] mas = line[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                Student d = new Student(mas[0], mas[1], mas[2], mas[3], int.Parse(mas[4]));
-                if (mas[3] == Group.Text)
+                try
                 {
-                    arj.Add(d);
-                    DataGrid.ItemsSource = arj;
+                    list = (List<Authorization>)formatter.Deserialize(fs);
                 }
-
+                catch
+                {
+                    list = new List<Authorization>();
+                }
             }
+            foreach (Authorization p in list)
+            {
+                if (p.St.Group == Group.Text)
+                {
+                    arj.Add(p.St);
+                }
+            }
+            
+
 
             if (arj.Count == 0)
             {
                 MessageBox.Show("Студенты не найдены", "", MessageBoxButton.OK);
-                Close();
+                return;
             }
-            arj.Clear();
+            DataGrid.ItemsSource = null;
+            DataGrid.ItemsSource = arj;
+            
+
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddStudent w3 = new AddStudent();
+            w3.Owner = this;
+            w3.Show();
+            Hide();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DeleteStudent w4 = new DeleteStudent();
+            w4.Owner = this;
+            w4.Show();
+            Hide();
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         using (StreamWriter sw = new StreamWriter("../../BazaD_Prepod.txt", true))
                             {
                             foreach (Prepodavatel p in arj)
-                                sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Fam, pr.Name, pr.Otch, pr.Predmet, pr.Log, pr.Parol);
+                                sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Sername, pr.Name, pr.Patronymic, pr.Predmet, pr.Login, pr.Parol);
 
                     }
                     MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
