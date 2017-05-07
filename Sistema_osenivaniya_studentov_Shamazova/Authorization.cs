@@ -9,12 +9,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     [Serializable]
     class Authorization
     {
-        private Studentp st;
+        private object user;
 
-        public Studentp St
+        public object User
         {
-            get { return st; }
-            set { st = value; }
+            get { return user; }
+            set { user = value; }
         }
 
         private string login;
@@ -31,11 +31,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return parol; }
             set { parol = value; }
         }
-        public Authorization(string _login, string _parol, Studentp _st)
+        public Authorization(string _login, string _parol, object _user)
         {
             login = _login;
             parol = _parol;
-            st = _st;
+            user = _user;
         }
 
     }

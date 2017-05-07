@@ -33,8 +33,9 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Studentp s = new Studentp(F.Text, N.Text, O.Text, Group.Text, int.Parse(M.Text));
-            Authorization Leysan = new Authorization(L.Text, P.Text, s);
+            string[] mas = FIO.Text.Split(new char[] { ' ' });
+            Students s = new Students(mas[0], mas[1], mas[2], Group.Text, ((Window2)Owner).P.Predmet, int.Parse(Mark.Text));
+            Authorization Leysan = new Authorization(Login.Text, Parol.Text, s);
             BinaryFormatter formatter = new BinaryFormatter();
             List<Authorization> list;
             using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
@@ -47,13 +48,45 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 }
             }
             list.Add(Leysan);
-            // получаем поток, куда будем записывать сериализованный объект
+            List<string> sername = new List<string>();
+            Authorization a;
+            for (int i = 0; i < list.Count; i++)
+            {
+                try
+                {
+                    Students st = (Students)list[i].User;
+                    sername.Add(st.Sername);
+                }
+                catch { }
+            }
+            sername.Sort();
+            for (int i = 0; i < sername.Count; i++)
+            {
+                for (int j = 0; j < list.Count; j++)
+                {
+                    try
+                    {
+                        Students st = (Students)list[j].User;
+                        if (st.Sername == sername[i])
+                        {
+                            a = list[j];
+                            list[j] = list[i];
+                            list[i] = a;
+                        }
+                    }
+                    catch { }
+                }
+            }
             using (FileStream fs = new FileStream("../../base.dat", FileMode.Open))
             {
                 formatter.Serialize(fs, list);
             }
-            Owner.Show();
-            Close();
+            MessageBox.Show("Студент добавлен", "-", MessageBoxButton.OK);
+            FIO.Text = "";
+            Group.Text = "";
+            Mark.Text = "";
+            Login.Text = "";
+            Parol.Text = "";
         }
     }
 }

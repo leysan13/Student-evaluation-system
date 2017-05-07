@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,30 +36,40 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            Prepodavatel d = null;
-            string[] line = File.ReadAllLines("../../BazaD_Prepod.txt");
-            for (int i = 0; i < line.Length; i++)
+            BinaryFormatter formatter = new BinaryFormatter();
+            List<Authorization> list;
+            using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
             {
-                string[] mas = line[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                d = new Prepodavatel(mas[0], mas[1], mas[2], mas[3], mas[4], mas[5]);
-                if (mas[4] == LoginText.Text && mas[5] == PasswordText.Text)
+                try
                 {
-                    break;
+                    list = (List<Authorization>)formatter.Deserialize(fs);
                 }
-                d = null;
+                catch
+                {
+                    list = new List<Authorization>();
+                }
             }
-            if (d == null)
+            foreach (Authorization x in list)
             {
-                MessageBox.Show("Неверный логин или пароль.", "", MessageBoxButton.OK);
+                if (x.Login == LoginText.Text && x.Parol == PasswordText.Text)
+                {
+                    try
+                    {
+                        new Window2((Prepodavatel)x.User).Show();
+                        Close();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Студентам доступ временно закрыт.\nВедутся разработки", "Невозможная операция", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                    return;
+                }
             }
-            else
-            {
-                Window2 w2 = new Window2(d);
-                w2.Show();
-                Close();
-            }
+            MessageBox.Show("Неверный логин или пароль.", "", MessageBoxButton.OK);
 
         }
+        
+        
         
     }
 }

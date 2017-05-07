@@ -63,7 +63,8 @@
       <DependentUpon>DeleteStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Prepodavatel.cs" />
-    <Compile Include="Studentp.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Students.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -125,11 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="BazaD_Prepod.txt">
-      <Generator>MSBuild:Compile</Generator>
-    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

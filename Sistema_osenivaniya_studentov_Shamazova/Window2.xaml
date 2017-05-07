@@ -10,7 +10,6 @@
         <Button Content="Показать" HorizontalAlignment="Left" Margin="102,192,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
         <DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Margin="444,85,0,0" VerticalAlignment="Top" Height="457" Width="393"/>
         <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="47,24,0,0" VerticalAlignment="Top" Width="790"/>
-        <TextBox HorizontalAlignment="Left" Height="22" Margin="102,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="102,156,0,0" VerticalAlignment="Top" Width="120">
             <TextBlock>ББИ161</TextBlock>
             <TextBlock>ББИ162</TextBlock>

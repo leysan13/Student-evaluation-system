@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -40,37 +41,35 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
             else
             {
-               
-                Prepodavatel d = null;
-                string[] line = File.ReadAllLines("../../BazaD_Prepod.txt");
-                for (int i = 0; i < line.Length; i++)
+                BinaryFormatter formatter = new BinaryFormatter();
+                List<Authorization> list;
+                using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
                 {
-
-                    string[] mas = line[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    d = new Prepodavatel(mas[0], mas[1], mas[2], mas[3], mas[4], mas[5]);
-                    if (mas[4] == textBox4.Text)
+                    try
                     {
-                        arj.Add(d);
+                        list = (List<Authorization>)formatter.Deserialize(fs);
+                    }
+                    catch
+                    {
+                        list = new List<Authorization>();
+                    }
+                }
+                foreach (Authorization x in list)
+                {
+                    if (x.Login == textBox4.Text)
+                    {
                         MessageBox.Show("Введённый логин уже используется", "", MessageBoxButton.OK);
+                        return;
                     }
-
                 }
-                if (arj.Count==0)
-                    {
-                        Prepodavatel pr;
-                        pr = new Prepodavatel(Fam_Textbox.Text, textBox2.Text, textBox3.Text, Choose.Text, textBox4.Text, textBox5.Text);
-                        arj.Add(pr);
-                        using (StreamWriter sw = new StreamWriter("../../BazaD_Prepod.txt", true))
-                            {
-                            foreach (Prepodavatel p in arj)
-                                sw.WriteLine("{0} {1} {2} {3} {4} {5}", pr.Sername, pr.Name, pr.Patronymic, pr.Predmet, pr.Login, pr.Parol);
 
-                    }
-                    MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
-                    Close();
+                list.Add(new Authorization(textBox4.Text, textBox5.Text, new Prepodavatel(Fam_Textbox.Text, textBox2.Text, textBox3.Text, Choose.Text)));
+                using (FileStream fs = new FileStream("../../base.dat", FileMode.Open))
+                {
+                    formatter.Serialize(fs, list);
                 }
-                arj.Clear();
-
+                MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
+                Close();
             }
         }
             

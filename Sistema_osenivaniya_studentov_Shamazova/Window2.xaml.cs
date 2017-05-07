@@ -22,7 +22,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     /// </summary>
     public partial class Window2 : Window
     {
-        Prepodavatel p;
+        private Prepodavatel p;
+
+        public Prepodavatel P
+        {
+            get { return p; }
+            set { p = value; }
+        }
+
         public Window2(Prepodavatel id)
         {
             p = id;
@@ -30,7 +37,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             Prepod.Content = p.Sername + " " + p.Name + " " + p.Patronymic + ".      " + p.Predmet +".";
 
         }
-        List<Studentp> arj = new List<Studentp>();
+        List<Student> arj = new List<Student>();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             arj.Clear();
@@ -47,12 +54,38 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     list = new List<Authorization>();
                 }
             }
-            foreach (Authorization p in list)
+            foreach (Authorization el in list)
             {
-                if (p.St.Group == Group.Text)
+                try
                 {
-                    arj.Add(p.St);
+                    Students s = (Students)el.User;
+                    if (s.Group == Group.Text)
+                    {
+                        int mark;
+                        switch (P.Predmet)
+                        {
+                            case "Программирование":
+                                mark = s.Programing;
+                                break;
+                            case "Экономика":
+                                mark = s.Econ;
+                                break;
+                            case "Математический анализ":
+                                mark = s.Mathematical_analysis;
+                                break;
+                            default:
+                                mark = 0;
+                                break;
+                        }
+                        Student st = new Student(s.Sername, s.Name, s.Patronymic, s.Group, mark);
+                        arj.Add(st);
+                    }
                 }
+                catch
+                {
+
+                }
+               
             }
             
 
@@ -60,6 +93,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             if (arj.Count == 0)
             {
                 MessageBox.Show("Студенты не найдены", "", MessageBoxButton.OK);
+                DataGrid.ItemsSource = null;
                 return;
             }
             DataGrid.ItemsSource = null;

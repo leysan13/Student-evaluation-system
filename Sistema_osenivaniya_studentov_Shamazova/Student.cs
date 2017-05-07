@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     [Serializable]
-    class Studentp
+    class Student
     {
         private string sername; //фамилия студента
 
@@ -48,30 +48,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             set { mark = value; }
         }
 
-        /*   
-          private int mark_economics; //оценка по экономике
-
-          public int Mark_economics
-          {
-              get { return mark_economics; }
-              set { mark_economics = value; }
-          }
-        private int mark_matan; //оценка по Математическому анализу
-
-          public int Mark_matan
-          {
-              get { return mark_matan; }
-              set { mark_matan = value; }
-          }*/
-        public Studentp(string _sername, string _name, string _patronymic, string _group, int _mark)
+        public Student(string _sername, string _name, string _patronymic, string _group, int _mark)
         {
             sername = _sername;
             name = _name;
             patronymic = _patronymic;
             group = _group;
             mark = _mark;
-       //     mark_matan = _mark_matan;
-          //  mark_economics = mark_ec;
+
         }
        
     }

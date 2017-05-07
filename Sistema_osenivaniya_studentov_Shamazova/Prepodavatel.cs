@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
-{
+{   
+    [Serializable]
     public class Prepodavatel
     {
         private string sername;
@@ -36,7 +37,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return predmet; }
             set { predmet = value; }
         }
-        private string login;
+     /*   private string login;
 
         public string Login
         {
@@ -50,15 +51,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return parol; }
             set { parol = value; }
         }
-
-        public Prepodavatel(string _sername, string _name, string _patronymic, string _predmet, string _login, string _parol )
+        */
+        public Prepodavatel(string _sername, string _name, string _patronymic, string _predmet/*, string _login, string _parol */)
         {
             sername = _sername;
             name = _name;
             patronymic = _patronymic;
             predmet = _predmet;
-            login = _login;
-            parol = _parol;
+
         }
 
     }
