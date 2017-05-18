@@ -48,15 +48,29 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             set { mark = value; }
         }
 
-        public Student(string _sername, string _name, string _patronymic, string _group, int _mark)
+        public Student(string _subject, Students student)
         {
-            sername = _sername;
-            name = _name;
-            patronymic = _patronymic;
-            group = _group;
-            mark = _mark;
+            sername = student.Sername;
+            name = student.Name;
+            patronymic = student.Patronymic;
+            group = student.Group;
+            switch (_subject)
+            {
+                case "Программирование":
+                    mark = student.Programming;
+                    break;
+                case "Экономика":
+                    mark = student.Economics;
+                    break;
+                case "Математический анализ":
+                    mark = student.Mathematical_analysis;
+                    break;
+                default:
+                    mark = 0;
+                    break;
 
+
+            }
         }
-       
     }
 }

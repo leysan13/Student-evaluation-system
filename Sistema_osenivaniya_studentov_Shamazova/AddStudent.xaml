@@ -9,14 +9,13 @@ Closing="W_Closing"
         Title="AddStudent" Height="553.711" Width="393.686" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Информация о студенте" HorizontalAlignment="Left" Margin="25,35,0,0" VerticalAlignment="Top" Width="226" FontSize="16"/>
-        <TextBox x:Name="Mark" HorizontalAlignment="Left" Height="23" Margin="303,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43"/>
-        <Label Content="Оценка по программированию:" HorizontalAlignment="Left" Margin="25,229,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Оценка по программированию:" HorizontalAlignment="Left" Margin="25,229,0,0" VerticalAlignment="Top"/>
         <Label Content="Параметры доступа" HorizontalAlignment="Left" Margin="25,299,0,0" VerticalAlignment="Top" Width="185" FontSize="16"/>
         <TextBox x:Name="Login" HorizontalAlignment="Left" Height="23" Margin="108,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Parol" HorizontalAlignment="Left" Height="23" Margin="108,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="108,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="29,377,0,0" VerticalAlignment="Top"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Margin="225,454,0,0" VerticalAlignment="Top" Width="121" Height="24" Click="Button_Click"/>
+        <Button x:Name="Add" Content="Добавить" HorizontalAlignment="Left" Margin="225,454,0,0" VerticalAlignment="Top" Width="121" Height="24" Click="Add_Click"/>
         <Label Content="ФИО" HorizontalAlignment="Left" Margin="29,104,0,0" VerticalAlignment="Top" Width="136"/>
         <Label Content="Группа" HorizontalAlignment="Left" Margin="25,198,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="161,198,0,0" VerticalAlignment="Top" Width="185">
@@ -31,6 +30,19 @@ Closing="W_Closing"
         </ComboBox>
         <TextBox x:Name="FIO" HorizontalAlignment="Left" Height="23" Margin="25,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
         <Label Content="При отсутствии отчества у студента пишите &quot;-&quot;" HorizontalAlignment="Left" Margin="25,158,0,0" VerticalAlignment="Top" Width="222" FontSize="8"/>
+        <ComboBox x:Name="Mark" HorizontalAlignment="Left" Margin="298,233,0,0" VerticalAlignment="Top" Width="48">
+            <TextBlock><Run Text="0"/></TextBlock>
+            <TextBlock><Run Text="1"/></TextBlock>
+            <TextBlock><Run Text="2"/></TextBlock>
+            <TextBlock><Run Text="3"/></TextBlock>
+            <TextBlock><Run Text="4"/></TextBlock>
+            <TextBlock><Run Text="5"/></TextBlock>
+            <TextBlock><Run Text="6"/></TextBlock>
+            <TextBlock><Run Text="7"/></TextBlock>
+            <TextBlock><Run Text="8"/></TextBlock>
+            <TextBlock><Run Text="9"/></TextBlock>
+            <TextBlock><Run Text="10"/></TextBlock>
+        </ComboBox>
 
     </Grid>
 </Window>

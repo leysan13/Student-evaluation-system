@@ -24,17 +24,17 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return login; }
             set { login = value; }
         }
-        private string parol;
+        private string password;
 
-        public string Parol
+        public string Password
         {
-            get { return parol; }
-            set { parol = value; }
+            get { return password; }
+            set { password = value; }
         }
-        public Authorization(string _login, string _parol, object _user)
+        public Authorization(string _login, string _password, object _user)
         {
             login = _login;
-            parol = _parol;
+            password = _password;
             user = _user;
         }
 

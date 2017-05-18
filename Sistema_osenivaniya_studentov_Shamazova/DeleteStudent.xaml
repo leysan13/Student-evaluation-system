@@ -22,7 +22,7 @@
             <TextBlock><Run Text="ББИ167"/></TextBlock>
             <TextBlock><Run Text="ББИ168"/></TextBlock>
         </ComboBox>
-        <Button x:Name="Delete" Content="Удалить" HorizontalAlignment="Center" Margin="252,172,288,0" VerticalAlignment="Top" Width="75" Click="Delete_Click"/>
+        <Button x:Name="Delete" Content="Удалить" Margin="243,167,288,0" Click="Delete_Click" Background="#FFDDDDDD" VerticalAlignment="Top" Height="22"/>
         <Label Content="При отсутствии отчества у студента пишите &quot;-&quot;" HorizontalAlignment="Left" Margin="161,75,0,0" VerticalAlignment="Top" Width="222" FontSize="8"/>
 
     </Grid>

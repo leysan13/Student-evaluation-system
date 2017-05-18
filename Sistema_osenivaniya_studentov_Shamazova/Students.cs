@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     [Serializable]
-    class Students
+         public class Students
     {
             private string sername; //фамилия студента
 
@@ -40,20 +40,20 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
 
 
-            private int programing=0; //оценка по программированию
+            private int programming=0; //оценка по программированию
 
-            public int Programing
+            public int Programming
             {
-                get { return programing; }
-                set { programing = value; }
+                get { return programming; }
+                set { programming = value; }
             }
 
-            private int econ=0;
+            private int economics=0;
 
-            public int Econ
+            public int Economics
             {
-                get { return econ; }
-                set { econ = value; }
+                get { return economics; }
+                set { economics = value; }
             }
 
             private int mathematical_analysis=0;
@@ -79,10 +79,10 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 switch (subject)
                 {
                     case "Программирование":
-                        programing = _mark;
+                        programming = _mark;
                         break;
                     case "Экономика":
-                        econ = _mark;
+                        economics = _mark;
                         break;
                     case "Математический анализ":
                         mathematical_analysis = _mark;
@@ -92,6 +92,26 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 }
 
             }
-
+        public int GetMark(string _subject)
+        {
+            int mark;
+            switch (_subject)
+            {
+                case "Программирование":
+                    mark = Programming;
+                    break;
+                case "Экономика":
+                    mark = Economics;
+                    break;
+                case "Математический анализ":
+                    mark = Mathematical_analysis;
+                    break;
+                default:
+                    mark = 0;
+                    break;
+                   
+            }
+            return mark;
+        }
         }
     }

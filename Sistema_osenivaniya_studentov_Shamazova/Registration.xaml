@@ -1,32 +1,33 @@
-﻿<Window x:Class="Sistema_osenivaniya_studentov_Shamazova.Window1"
+﻿<Window x:Class="Sistema_osenivaniya_studentov_Shamazova.Registration"
+        Closing="W_Closing"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
         mc:Ignorable="d"
-        Title="Window1" BorderThickness="0" Width="631" Height="622.206">
+        Title="Registration" BorderThickness="0" Width="631" Height="622.206" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
             <ColumnDefinition Width="217*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Фамилия&#xD;&#xA;Фамилия" HorizontalAlignment="Left" Height="23" Margin="27.979,45,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
-        <TextBox x:Name="Fam_Textbox" HorizontalAlignment="Left" Height="23" Margin="194.979,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
+        <TextBox x:Name="Sername" HorizontalAlignment="Left" Height="23" Margin="194.979,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Label Content="Имя" HorizontalAlignment="Left" Height="23" Margin="27.979,77,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="194.979,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="194.979,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Label Content="Отчество" HorizontalAlignment="Left" Height="23" Margin="27.979,109,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="194.979,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
+        <TextBox x:Name="Patronymic" HorizontalAlignment="Left" Height="23" Margin="194.979,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Label Content="Предмет, который вы&#xD;&#xA;преподаёте" Margin="28,141,0,0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="143"/>
-        <ComboBox x:Name="Choose" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="195,141,0,0" VerticalAlignment="Top" Width="314">
+        <ComboBox x:Name="Subject" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="195,141,0,0" VerticalAlignment="Top" Width="314">
             <TextBlock>Программирование</TextBlock>
             <TextBlock>Экономика</TextBlock>
             <TextBlock>Математический анализ</TextBlock>
         </ComboBox>
         <Label Content="Логин" HorizontalAlignment="Left" Height="23" Margin="27.979,206,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
-        <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="194.979,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
+        <TextBox x:Name="Login" HorizontalAlignment="Left" Height="23" Margin="194.979,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="27.979,240,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
-        <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="194.979,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="194.979,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Button x:Name="Enter" Content="Зарегистрироваться" Grid.Column="1" HorizontalAlignment="Left" Height="51" Margin="28,280,0,0" VerticalAlignment="Top" Width="481" Click="Enter_Click"/>
 
     </Grid>

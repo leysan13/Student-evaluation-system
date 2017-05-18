@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sistema_osenivaniya_studentov_Shamazova
 {   
     [Serializable]
-    public class Prepodavatel
+    public class Teacher
     {
         private string sername;
 
@@ -30,34 +30,20 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             get { return patronymic; }
             set { patronymic = value; }
         }
-        private string predmet;
+        private string subject;
 
-        public string Predmet
+        public string Subject
         {
-            get { return predmet; }
-            set { predmet = value; }
+            get { return subject;
+            }
+            set { subject = value; }
         }
-     /*   private string login;
-
-        public string Login
-        {
-            get { return login; }
-            set { login = value; }
-        }
-        private string parol;
-
-        public string Parol
-        {
-            get { return parol; }
-            set { parol = value; }
-        }
-        */
-        public Prepodavatel(string _sername, string _name, string _patronymic, string _predmet/*, string _login, string _parol */)
+        public Teacher(string _sername, string _name, string _patronymic, string _subject)
         {
             sername = _sername;
             name = _name;
             patronymic = _patronymic;
-            predmet = _predmet;
+            subject = _subject;
 
         }
 

@@ -22,6 +22,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -29,9 +30,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-           
-            Window1 w1 = new Window1();
+
+            Registration w1 = new Registration();
+            w1.Owner = this;
             w1.Show();
+            Hide();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
@@ -51,16 +54,19 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
             foreach (Authorization x in list)
             {
-                if (x.Login == LoginText.Text && x.Parol == PasswordText.Text)
+                if (x.Login == LoginText.Text && x.Password == PasswordText.Text)
                 {
                     try
                     {
-                        new Window2((Prepodavatel)x.User).Show();
+
+                         new TeachersWindow((Teacher)x.User).Show();
                         Close();
                     }
                     catch
                     {
-                        MessageBox.Show("Студентам доступ временно закрыт.\nВедутся разработки", "Невозможная операция", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        new StudentsWindow((Students)x.User).Show();
+                        Close();
+                      //  MessageBox.Show("Студентам доступ временно закрыт.\nВедутся разработки", "Невозможная операция", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
                     return;
                 }
@@ -68,8 +74,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             MessageBox.Show("Неверный логин или пароль.", "", MessageBoxButton.OK);
 
         }
-        
-        
-        
+
+        private void info_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationWindow win = new NavigationWindow();
+            win.Content = new Info();
+            win.Show();
+        }
     }
 }
