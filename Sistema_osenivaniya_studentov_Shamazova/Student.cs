@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
@@ -32,15 +28,13 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         }
         private string group; //группа
 
-
         public string Group
         {
             get { return group; }
             set { group = value; }
         }
 
-      
-        private int mark; //оценка по программированию
+        private int mark; //оценка 
 
         public int Mark
         {
@@ -57,19 +51,17 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             switch (_subject)
             {
                 case "Программирование":
-                    mark = student.Programming;
+                    mark = student.marks.Programming;
                     break;
                 case "Экономика":
-                    mark = student.Economics;
+                    mark = student.marks.Economics;
                     break;
                 case "Математический анализ":
-                    mark = student.Mathematical_analysis;
+                    mark = student.marks.Mathematical_analysis;
                     break;
                 default:
                     mark = 0;
                     break;
-
-
             }
         }
     }

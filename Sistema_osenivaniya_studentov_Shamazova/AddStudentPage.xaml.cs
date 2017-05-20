@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,26 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     /// <summary>
-    /// Логика взаимодействия для AddStudent.xaml
+    /// Логика взаимодействия для AddStudentPage.xaml
     /// </summary>
-    public partial class AddStudent : Window
+    public partial class AddStudentPage : Page
     {
-        void W_Closing(object sender, CancelEventArgs e) {
-            Owner.Show();
-        }
-
-        public AddStudent(TeachersWindow w)
+        public AddStudentPage(Teacher id)
         {
-            Owner = w;
             InitializeComponent();
-            label.Content = "Оценка по предмету '" + w.P.Subject + "'";
+            label.Content = "Оценка по предмету '" + id.Subject + "'";
+            subject = id.Subject;
         }
-
+        string subject;
         private void Add_Click(object sender, RoutedEventArgs e)
         {
 
@@ -44,7 +38,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             else
             {
                 string[] mas = FIO.Text.Split(new char[] { ' ' });
-                if (mas.Length <3)
+                if (mas.Length < 3)
                 {
                     MessageBox.Show("Заполните поле 'ФИО' должным образом.", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
@@ -54,22 +48,9 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     MessageBox.Show("Заполните поле 'ФИО' должным образом. \nСлишком много данных в одной строке.", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
                 }
-
-                Students s = new Students(mas[0], mas[1], mas[2], Group.Text, ((TeachersWindow)Owner).P.Subject, int.Parse(Mark.Text));    
-                BinaryFormatter formatter = new BinaryFormatter();
-                List<Authorization> list;
-
-                using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
-                {
-                    try
-                    {
-                        list = (List<Authorization>)formatter.Deserialize(fs);
-                    }
-                    catch
-                    {
-                        list = new List<Authorization>();
-                    }
-                }
+                Serialization ser = new Serialization();
+                Students s = new Students(mas[0], mas[1], mas[2], Group.Text, subject, int.Parse(Mark.Text));
+                List<Authorization> list = ser.Deserialize();
                 foreach (Authorization x in list)
                 {
                     if (x.Login == Login.Text)
@@ -109,11 +90,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         catch { }
                     }
                 }
-
-                using (FileStream fs = new FileStream("../../base.dat", FileMode.Open))
-                {
-                    formatter.Serialize(fs, list);
-                }
+                ser.Serialize(list);
                 MessageBox.Show("Студент добавлен", "-", MessageBoxButton.OK);
                 FIO.Text = "";
                 Group.Text = "";
@@ -121,6 +98,26 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 Login.Text = "";
                 Password.Text = "";
             }
+        }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            label.FontSize = 10;
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            label.FontSize = 8;
+        }
+
+        private void Add_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Add.Background = new SolidColorBrush(Colors.HotPink);
+        }
+
+        private void Add_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Add.Background = new SolidColorBrush(Colors.LavenderBlush);
         }
     }
 }

@@ -55,37 +55,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddStudent.xaml.cs">
-      <DependentUpon>AddStudent.xaml</DependentUpon>
+    <Compile Include="AddStudentPage.xaml.cs">
+      <DependentUpon>AddStudentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs" />
-    <Compile Include="DeleteStudent.xaml.cs">
-      <DependentUpon>DeleteStudent.xaml</DependentUpon>
+    <Compile Include="DeleteStudentPage.xaml.cs">
+      <DependentUpon>DeleteStudentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Info.xaml.cs">
-      <DependentUpon>Info.xaml</DependentUpon>
+    <Compile Include="Entrance.xaml.cs">
+      <DependentUpon>Entrance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentsWindow.xaml.cs">
-      <DependentUpon>StudentsWindow.xaml</DependentUpon>
+    <Compile Include="Marks.cs" />
+    <Compile Include="RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization.cs" />
+    <Compile Include="StudentsPage.xaml.cs">
+      <DependentUpon>StudentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeachersPage.xaml.cs">
+      <DependentUpon>TeachersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Students.cs" />
-    <Compile Include="Registration.xaml.cs">
-      <DependentUpon>Registration.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TeachersWindow.xaml.cs">
-      <DependentUpon>TeachersWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="AddStudent.xaml">
+    <Page Include="AddStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeleteStudent.xaml">
+    <Page Include="DeleteStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Info.xaml">
+    <Page Include="Entrance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeachersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,18 +115,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Registration.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StudentsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TeachersWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

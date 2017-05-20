@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,20 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     /// <summary>
-    /// Логика взаимодействия для DeleteStudent.xaml
+    /// Логика взаимодействия для DeleteStudentPage.xaml
     /// </summary>
-    public partial class DeleteStudent : Window
+    public partial class DeleteStudentPage : Page
     {
-            void W_Closing(object sender, CancelEventArgs e)
-            {
-                Owner.Show();
-            }
-            public DeleteStudent()
+        public DeleteStudentPage()
         {
             InitializeComponent();
         }
@@ -40,8 +34,8 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
             else
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                List<Authorization> list;
+                Serialization ser = new Serialization();
+                List<Authorization> list = ser.Deserialize();
                 string[] mas = FIO.Text.Split(new char[] { ' ' });
                 if (mas.Length < 3)
                 {
@@ -52,19 +46,6 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 {
                     MessageBox.Show("Заполните поле 'ФИО' должным образом. \nСлишком много данных в одной строке.", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     return;
-                }
-                using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
-                {
-
-                    try
-                    {
-                        list = (List<Authorization>)formatter.Deserialize(fs);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Студент не найден", "-", MessageBoxButton.OK);
-                        return;
-                    }
                 }
                 bool t = false;
                 foreach (Authorization student in list)
@@ -78,6 +59,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                             MessageBox.Show("Удаление завершено", "-", MessageBoxButton.OK);
                             FIO.Text = "";
                             Group.Text = "";
+                            ser.Serialize(list);
                             t = true;
                             break;
                         }
@@ -87,11 +69,9 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 }
                 if (t == false)
                 { MessageBox.Show("Студент не найден", "-", MessageBoxButton.OK); }
-                using (FileStream fs = new FileStream("../../base.dat", FileMode.Open))
-                {
-                    formatter.Serialize(fs, list);
-                }
+               
             }
-        }
+        
+    }
     }
 }

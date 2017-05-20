@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
@@ -25,61 +26,22 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         
         public MainWindow()
         {
+            
             InitializeComponent();
-        }
-
-        private void Register_Click(object sender, RoutedEventArgs e)
-        {
-
-            Registration w1 = new Registration();
-            w1.Owner = this;
-            w1.Show();
-            Hide();
-        }
-
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            List<Authorization> list;
-            using (FileStream fs = new FileStream("../../base.dat", FileMode.OpenOrCreate))
-            {
-                try
-                {
-                    list = (List<Authorization>)formatter.Deserialize(fs);
-                }
-                catch
-                {
-                    list = new List<Authorization>();
-                }
-            }
-            foreach (Authorization x in list)
-            {
-                if (x.Login == LoginText.Text && x.Password == PasswordText.Text)
-                {
-                    try
-                    {
-
-                         new TeachersWindow((Teacher)x.User).Show();
-                        Close();
-                    }
-                    catch
-                    {
-                        new StudentsWindow((Students)x.User).Show();
-                        Close();
-                      //  MessageBox.Show("Студентам доступ временно закрыт.\nВедутся разработки", "Невозможная операция", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    }
-                    return;
-                }
-            }
-            MessageBox.Show("Неверный логин или пароль.", "", MessageBoxButton.OK);
-
-        }
-
-        private void info_Click(object sender, RoutedEventArgs e)
-        {
             NavigationWindow win = new NavigationWindow();
-            win.Content = new Info();
+            double screenHeight = SystemParameters.FullPrimaryScreenHeight;
+            double screenWidth = SystemParameters.FullPrimaryScreenWidth;
+            win.Height = screenHeight;
+            win.Top = 0;
+            win.Width = screenWidth;
+            win.Left = 0;
+            win.Content = new Entrance();
             win.Show();
+            Close();
+          //  frameMain.Navigate(new Entrance());
         }
+
+       
+
     }
 }

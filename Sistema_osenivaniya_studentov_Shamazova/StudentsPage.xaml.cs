@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     /// <summary>
-    /// Логика взаимодействия для StudentsWindow.xaml
+    /// Логика взаимодействия для StudentsPage.xaml
     /// </summary>
-    public partial class StudentsWindow : Window
+    public partial class StudentsPage : Page
     {
         private Students st;
 
@@ -27,19 +28,24 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             set { st = value; }
         }
 
-        public StudentsWindow(Students id)
+        public StudentsPage(Students id)
         {
-            st = id;
             InitializeComponent();
-            StudentName.Content = St.Name + " " + St.Sername + " " + St.Patronymic + ", группа " + St.Group;
-
+            St = id;
+            StudentName.Content = St.Sername + " " + St.Name + " " + St.Patronymic + ", группа " + St.Group;
+            List<Marks> arj = new List<Marks>();
+            arj.Add(St.marks);
+            Datagrid.ItemsSource = null;
+           Datagrid.ItemsSource = arj;
+           if (arj.Count==0) { MessageBox.Show("Где все оценки?!",""); }
+            
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.Show();
-            Close();
+            St = null;
+            Datagrid.ItemsSource = null;
+            NavigationService.Navigate(new Entrance());
         }
     }
 }
