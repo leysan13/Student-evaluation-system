@@ -38,6 +38,15 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
             set { subject = value; }
         }
+        //private List<HistoryOfChanges> history;
+
+        //public List<HistoryOfChanges> History
+        //{
+        //    get { return history; }
+        //    set { history = value; }
+        //}
+
+
         public Teacher(string _sername, string _name, string _patronymic, string _subject)
         {
             sername = _sername;
@@ -46,6 +55,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             subject = _subject;
 
         }
-
+        //public void AddHistoryChange(Authorization before, Authorization after)
+        //{
+        //    history = new List<HistoryOfChanges>();
+        //    HistoryOfChanges hist = new HistoryOfChanges(before,after);
+        //    history.Add(hist);
+        //}
     }
 }

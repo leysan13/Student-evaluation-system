@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     [Serializable]
-    class Authorization
+   public class Authorization
     {
         private object user;
 

@@ -20,13 +20,17 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     /// </summary>
     public partial class DeleteStudentPage : Page
     {
-        public DeleteStudentPage()
+        Teacher P;
+        public DeleteStudentPage(Teacher id)
         {
+            P = id;
             InitializeComponent();
+            FIO.Focus();
         }
-
+        
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            
             if ((FIO.Text == "") || (Group.Text == ""))
             {
                 MessageBox.Show("Заполните все поля!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -55,11 +59,13 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         Students st = (Students)student.User;
                         if ((mas[0] == st.Sername) && (mas[1] == st.Name) && (mas[2] == st.Patronymic) && (Group.Text == st.Group))
                         {
+                            //P.AddHistoryChange(student, null);
                             list.Remove(student);
+                            ser.Serialize(list);
                             MessageBox.Show("Удаление завершено", "-", MessageBoxButton.OK);
                             FIO.Text = "";
                             Group.Text = "";
-                            ser.Serialize(list);
+                           
                             t = true;
                             break;
                         }
@@ -73,5 +79,10 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
         
     }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

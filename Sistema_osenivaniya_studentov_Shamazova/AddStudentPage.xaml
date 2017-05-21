@@ -15,7 +15,7 @@
         <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="108,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="29,346,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="29,377,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Add" Content="Добавить" HorizontalAlignment="Left" Margin="225,454,0,0" VerticalAlignment="Top" Width="121" Height="24" Click="Add_Click" MouseEnter="Add_MouseEnter" MouseLeave="Add_MouseLeave"/>
+        <Button x:Name="Add" Content="Добавить" HorizontalAlignment="Left" Margin="225,454,0,0" VerticalAlignment="Top" Width="121" Height="24" Click="Add_Click" MouseEnter="Add_MouseEnter" MouseLeave="Add_MouseLeave" IsDefault="True"/>
         <Label Content="ФИО" HorizontalAlignment="Left" Margin="29,104,0,0" VerticalAlignment="Top" Width="136"/>
         <Label Content="Группа" HorizontalAlignment="Left" Margin="25,198,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="161,198,0,0" VerticalAlignment="Top" Width="185">
@@ -28,8 +28,8 @@
             <TextBlock><Run Text="ББИ167"/></TextBlock>
             <TextBlock><Run Text="ББИ168"/></TextBlock>
         </ComboBox>
-        <TextBox x:Name="FIO" HorizontalAlignment="Left" Height="23" Margin="25,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
-        <Label Content="При отсутствии отчества у студента пишите &quot;-&quot;" HorizontalAlignment="Left" Margin="25,158,0,0" VerticalAlignment="Top" Width="336" FontSize="8" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"/>
+        <TextBox x:Name="FIO" HorizontalAlignment="Left" Height="23" Margin="25,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" />
+        <Label x:Name="LABEL" Content="При отсутствии отчества у студента пишите &quot;-&quot;" HorizontalAlignment="Left" Margin="25,158,0,0" VerticalAlignment="Top" Width="336" FontSize="8" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave"/>
         <ComboBox x:Name="Mark" HorizontalAlignment="Left" Margin="298,233,0,0" VerticalAlignment="Top" Width="48">
             <TextBlock><Run Text="0"/></TextBlock>
             <TextBlock><Run Text="1"/></TextBlock>
@@ -43,6 +43,7 @@
             <TextBlock><Run Text="9"/></TextBlock>
             <TextBlock><Run Text="10"/></TextBlock>
         </ComboBox>
+        <Button x:Name="GoBack" Content="Вернуться назад" HorizontalAlignment="Left" Height="22" Margin="298,518,0,0" VerticalAlignment="Top" Width="111" Click="GoBack_Click" IsCancel="True"/>
 
     </Grid>
 </Page>

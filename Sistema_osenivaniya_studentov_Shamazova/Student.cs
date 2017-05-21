@@ -3,7 +3,7 @@
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     [Serializable]
-    class Student
+   public class Student
     {
         private string sername; //фамилия студента
 

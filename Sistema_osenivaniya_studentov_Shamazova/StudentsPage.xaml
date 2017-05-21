@@ -10,7 +10,7 @@
 
     <Grid HorizontalAlignment="Left" Width="540" Height="400" VerticalAlignment="Top" Margin="10,0,0,0">
         <Label x:Name="StudentName" Content="Label" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="341"/>
-        <DataGrid x:Name="Datagrid" HorizontalAlignment="Left" Margin="20,87,0,0" VerticalAlignment="Top" Height="59" Width="462" IsEnabled="False"/>
-        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="407,32,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click"/>
+        <DataGrid x:Name="Datagrid" HorizontalAlignment="Center" Margin="20,92,200,249" VerticalAlignment="Center" Height="59" Width="320" IsEnabled="False"/>
+        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="407,32,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsDefault="True" IsCancel="True"/>
     </Grid>
 </Page>

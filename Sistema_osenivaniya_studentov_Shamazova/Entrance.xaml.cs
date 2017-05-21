@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,14 +27,24 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         public Entrance()
         {
             InitializeComponent();
+            LoginText.Focus();
+            LoginText.TabIndex = 0;
+            Password.TabIndex = 1;
+        }
+        private string CalculateHash(string password)
+        {
+            MD5 md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Convert.ToBase64String(hash);
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            var hash = CalculateHash(Password.Password);
             List<Authorization> list = new Serialization().Deserialize();
             foreach (Authorization x in list)
             {
-                if (x.Login == LoginText.Text && x.Password == Password.Password)
+                if (x.Login == LoginText.Text && x.Password == hash)
                 {
                     try
                     {

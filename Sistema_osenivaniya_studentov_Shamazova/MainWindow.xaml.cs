@@ -36,9 +36,10 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             win.Width = screenWidth;
             win.Left = 0;
             win.Content = new Entrance();
+           // win.Icon = "../../personal_7148.ico";
+            win.ShowsNavigationUI = false;
             win.Show();
             Close();
-          //  frameMain.Navigate(new Entrance());
         }
 
        

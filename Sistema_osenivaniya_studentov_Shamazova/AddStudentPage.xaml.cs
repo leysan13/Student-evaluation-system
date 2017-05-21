@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,18 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             InitializeComponent();
             label.Content = "Оценка по предмету '" + id.Subject + "'";
             subject = id.Subject;
+            FIO.Focus();
+            FIO.TabIndex = 0;
+            Group.TabIndex = 1;
+            Mark.TabIndex = 2;
+            Login.TabIndex = 3;
+            Password.TabIndex = 4;
+        }
+        private string CalculateHash(string password)
+        {
+            MD5 md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Convert.ToBase64String(hash);
         }
         string subject;
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -59,7 +72,8 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         return;
                     }
                 }
-                Authorization Leysan = new Authorization(Login.Text, Password.Text, s);
+                var hash = CalculateHash(Password.Text);
+                Authorization Leysan = new Authorization(Login.Text, hash, s);
                 list.Add(Leysan);
                 List<string> sername = new List<string>();
                 Authorization a;
@@ -92,7 +106,9 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                 }
                 ser.Serialize(list);
                 MessageBox.Show("Студент добавлен", "-", MessageBoxButton.OK);
+                
                 FIO.Text = "";
+                FIO.Focus();
                 Group.Text = "";
                 Mark.Text = "";
                 Login.Text = "";
@@ -102,12 +118,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
         {
-            label.FontSize = 10;
+            LABEL.FontSize = 10;
         }
 
         private void Label_MouseLeave(object sender, MouseEventArgs e)
         {
-            label.FontSize = 8;
+            LABEL.FontSize = 8;
         }
 
         private void Add_MouseEnter(object sender, MouseEventArgs e)
@@ -119,5 +135,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             Add.Background = new SolidColorBrush(Colors.LavenderBlush);
         }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
     }
 }

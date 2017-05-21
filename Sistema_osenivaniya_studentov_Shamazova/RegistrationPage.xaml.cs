@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         public RegistrationPage()
         {
             InitializeComponent();
+            Sername.Focus();
+            
+        }
+        private string CalculateHash(string password)
+        {
+            MD5 md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
+            return Convert.ToBase64String(hash);
         }
         ArrayList arj = new ArrayList();
         private void Enter_Click(object sender, RoutedEventArgs e)
@@ -55,7 +64,8 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                             return;
                         }
                     }
-                    list.Add(new Authorization(Login.Text, Password.Text, new Teacher(Sername.Text, Name.Text, Patronymic.Text, Subject.Text)));
+                    var hash = CalculateHash(Password.Text);
+                    list.Add(new Authorization(Login.Text, hash, new Teacher(Sername.Text, Name.Text, Patronymic.Text, Subject.Text)));
                     ser.Serialize(list);
                     MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
 
@@ -70,6 +80,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             Password.Text = "";
             NavigationService.GoBack();
 
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

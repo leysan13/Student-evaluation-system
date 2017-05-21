@@ -24,7 +24,8 @@
         <TextBox x:Name="Login" HorizontalAlignment="Left" Height="23" Margin="194.979,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="27.979,240,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1"/>
         <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="194.979,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Grid.Column="1"/>
-        <Button x:Name="Enter" Content="Зарегистрироваться" Height="51" Margin="28,280,0,0" VerticalAlignment="Top" Click="Enter_Click" HorizontalAlignment="Left" Width="481"/>
+        <Button x:Name="Enter" Content="Зарегистрироваться" Height="51" Margin="28,280,0,0" VerticalAlignment="Top" Click="Enter_Click" HorizontalAlignment="Left" Width="481" IsDefault="True"/>
+        <Button x:Name="GoBack" Content="Вернуться ко Входу" HorizontalAlignment="Left" Margin="374,10,0,0" VerticalAlignment="Top" Width="135" Click="GoBack_Click" IsCancel="True"/>
 
     </Grid>
 </Page>

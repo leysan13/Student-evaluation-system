@@ -37,7 +37,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             arj.Add(St.marks);
             Datagrid.ItemsSource = null;
            Datagrid.ItemsSource = arj;
-           if (arj.Count==0) { MessageBox.Show("Где все оценки?!",""); }
+            Exit.Focus();
             
         }
 
@@ -45,6 +45,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             St = null;
             Datagrid.ItemsSource = null;
+            StudentName.Content = "";
             NavigationService.Navigate(new Entrance());
         }
     }

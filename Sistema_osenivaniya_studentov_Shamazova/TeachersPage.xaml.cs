@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
     /// <summary>
-    /// Логика взаимодействия для Info.xaml
+    /// Логика взаимодействия для TeachersPage.xaml
     /// </summary>
     public partial class TeachersPage : Page
     {
@@ -36,6 +36,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             InitializeComponent();
             Prepod.Content = p.Sername + " " + p.Name + " " + p.Patronymic + ".      " + p.Subject + ".";
             if (P == null) { NavigationService.Navigate(new Entrance()); }
+            Group.TabIndex = 0;
+            Show.TabIndex = 1;
+            Group.Focus();
+            Add.TabIndex = 2;
+            Delete.TabIndex = 3;
+            FIO.TabIndex = 4;
+            Mark.TabIndex = 5;
+            Search.TabIndex = 6;
 
         }
         List<Student> arj = new List<Student>();
@@ -47,6 +55,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             if (P == null) { NavigationService.Navigate(new Entrance()); return; }
             Group.Text = "";
+            group = "";
             if (FIO.Text == "" && Mark.Text == "")
             {
                 MessageBox.Show("Для того, чтобы воспользоваться поиском, заполните все поля", "", MessageBoxButton.OK, MessageBoxImage.Exclamation); return;
@@ -165,7 +174,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     try
                     {
                         Students student = (Students)el.User;
-                        if (Group.Text != "")
+                        if (group != "")
                         {
                             if (student.Group == group)
                             {
@@ -245,6 +254,65 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     {
                         MessageBox.Show("ФИО должны быть записаны буквами", "!", MessageBoxButton.OK, MessageBoxImage.Exclamation); return;
                     }
+                    //int _mark;
+                    //switch (P.Subject)
+                    //{
+                    //    case "Программирование":
+                    //        _mark=listOfStudents[i].marks.Programming;
+                    //        break;
+                    //    case "Экономика":
+                    //        _mark=listOfStudents[i].marks.Economics;
+                    //        break;
+                    //    case "Математический анализ":
+                    //        _mark=listOfStudents[i].marks.Mathematical_analysis;
+                    //        break;
+                    //    default:
+                    //        _mark = 0;
+                    //        break;
+                    //}
+                    //Authorization StudentBefore;
+                    //Authorization StudentAfter;
+                    //if (listOfStudents[i].Name!=arj[i].Name||listOfStudents[i].Sername!=arj[i].Sername||listOfStudents[i].Patronymic!=arj[i].Patronymic||listOfStudents[i].Group!=arj[i].Group||mark!=arj[i].Mark)
+                    //{
+                    //    try
+                    //    {
+                    //        foreach (Authorization x in list)
+                    //        {
+                    //            Students s = (Students)x.User;
+                    //            if (listOfStudents[i] == s)
+                    //            {
+                    //                StudentBefore = x;
+                    //                Students st = new Students(arj[i].Sername, arj[i].Name, arj[i].Patronymic, arj[i].Group, P.Subject, arj[i].Mark);
+                    //                switch (P.Subject)
+                    //                {
+                    //                    case "Программирование":
+                    //                        st.marks.Economics = s.marks.Economics;
+                    //                        st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
+                    //                        break;
+                    //                    case "Экономика":
+                    //                        st.marks.Programming = s.marks.Programming;
+                    //                        st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
+                    //                        break;
+                    //                    case "Математический анализ":
+                    //                        st.marks.Programming = s.marks.Programming;
+                    //                        st.marks.Economics = s.marks.Economics;
+                    //                        break;
+                    //                    default:
+
+                    //                        break;
+                    //                }
+                    //                StudentAfter = new Authorization(x.Login, x.Password, st);
+                    //                P.AddHistoryChange(StudentBefore, StudentAfter);
+                    //            }
+                                
+                    //        }
+
+                    //    }
+                    //    catch
+                    //    {
+                    //    }
+                    //}
+
                     listOfStudents[i].Name = arj[i].Name;
                     listOfStudents[i].Sername = arj[i].Sername;
                     listOfStudents[i].Patronymic = arj[i].Patronymic;
@@ -367,11 +435,12 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             if (P == null) { NavigationService.Navigate(new Entrance()); return; }
             DataGrid.ItemsSource = null;
-            NavigationService.Navigate(new DeleteStudentPage());
+            NavigationService.Navigate(new DeleteStudentPage(P));
         }
-        int y;
-        private void Del_Click(object sender, RoutedEventArgs e)
+          private void Del_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             int selectedindex = DataGrid.SelectedIndex;
             if (selectedindex == -1)
 
@@ -380,41 +449,46 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             }
             else
             {
-                MessageBoxResult answer;
-                answer = MessageBox.Show("Вы точно хотите безвозвратно удалить студента " +arj[selectedindex].Sername+" " +arj[selectedindex].Name +" "+arj[selectedindex].Patronymic+ "?", "Удаление данных", MessageBoxButton.OKCancel);
-                
-                if (answer == MessageBoxResult.OK)
-                {
 
-                     Serialization ser = new Serialization();
+                Serialization ser = new Serialization();
                     List<Authorization> list = ser.Deserialize();
+               
+                List<int> index = new List<int>();
                     for (int i = 0; i < list.Count; i++)
                     {
-                        try
+                    try
+                    {
+                        Students s = list[i].User as Students;
+                        foreach (var row in DataGrid.SelectedItems)
                         {
-                            Students s = (Students)list[i].User;
-                            if (s.Name == arj[selectedindex].Name && s.Sername == arj[selectedindex].Sername && s.Patronymic == arj[selectedindex].Patronymic && s.Group == arj[selectedindex].Group)
+                            Student st = row as Student;
+                            if (st.Sername==s.Sername&&st.Name==s.Name&&s.Group==st.Group&&st.Patronymic==s.Patronymic)
                             {
-                            y = i;
-
+                            //    Object stud = new Students("-", "-", "-", "-", "-", 0);
+                            //    Authorization x = new Authorization("-", "-", stud);
+                            //    P.AddHistoryChange(list[i], x);
+                                arj.Remove(st);
+                                index.Add(i);
+                                break;
                             }
+                            
                         }
-                        catch
-                        {
-                        }
-                    }
-                    list.Remove(list[y]);
-                    arj.RemoveAt(selectedindex);
 
-                    DataGrid.ItemsSource = null;
-                    DataGrid.Columns.Clear();
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                for (int i = 0; i < index.Count; i++)
+                {
+                    list.RemoveAt(index[i]);
+                }
+                DataGrid.ItemsSource = null;
                     DataGrid.ItemsSource = arj;
                    
                     ser.Serialize(list);
 
-
-
-                }
             }
 
             }
@@ -475,6 +549,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             
 
+        }
+
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new History(P));
         }
     }
 }
