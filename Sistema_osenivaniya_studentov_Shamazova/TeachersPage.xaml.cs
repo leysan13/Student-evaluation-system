@@ -609,33 +609,37 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Show_MouseEnter(object sender, MouseEventArgs e)
         {
-
+            Show.FontSize += 2;
             Show.Width += 2;
         }
 
         private void Show_MouseLeave(object sender, MouseEventArgs e)
         {
-
+            Show.FontSize -= 2;
             Show.Width -= 2;
         }
 
         private void Add_MouseEnter(object sender, MouseEventArgs e)
         {
+            Add.FontSize += 2;
             Add.Width += 2;
         }
 
         private void Add_MouseLeave(object sender, MouseEventArgs e)
         {
+            Add.FontSize -= 2;
             Add.Width -= 2;
         }
 
         private void Delete_MouseEnter(object sender, MouseEventArgs e)
         {
+            Delete.FontSize += 2;
             Delete.Width += 2;
         }
 
         private void Delete_MouseLeave(object sender, MouseEventArgs e)
         {
+            Delete.FontSize -= 2;
             Delete.Width -= 2;
         }
 
@@ -651,17 +655,20 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void Search_MouseEnter(object sender, MouseEventArgs e)
         {
+            Search.FontSize += 2;
             Search.Width += 2;
         }
 
         private void Search_MouseLeave(object sender, MouseEventArgs e)
         {
+            Search.FontSize -= 2;
             Search.Width -= 2;
         }
         
         private void Del_MouseEnter(object sender, MouseEventArgs e)
         {
-            
+            Del.FontSize += 2;
+            Del.Width += 2;
 
         }
 
@@ -669,6 +676,36 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             DataGrid.ItemsSource = null;
             NavigationService.Navigate(new History(P));
+        }
+
+        private void Del_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Del.Width -= 2;
+            Del.FontSize -= 2;
+        }
+
+        private void History_MouseEnter(object sender, MouseEventArgs e)
+        {
+            History.FontSize += 2;
+            History.Width += 2;
+        }
+
+        private void History_MouseLeave(object sender, MouseEventArgs e)
+        {
+            History.Width -= 2;
+            History.FontSize -= 2;
+        }
+
+        private void Exit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Exit.FontSize += 2;
+            Exit.Width += 2;
+        }
+
+        private void Exit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Exit.FontSize -= 2;
+            Exit.Width -= 2;
         }
     }
 }

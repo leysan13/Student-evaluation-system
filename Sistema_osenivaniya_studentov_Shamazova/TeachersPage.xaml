@@ -5,14 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
       mc:Ignorable="d"
+      Background="Goldenrod"
       Title="Info" Width="1296.625" Height="804.1" >
 
 
     <Grid Margin="61,10,65,0" Height="732" VerticalAlignment="Top" >
+        <Image Source="/Images/man.jpg" Margin="-10,-28,0,0"/>
         <Button x:Name="Show" Content="Показать" HorizontalAlignment="Left" Margin="103,183,0,0" VerticalAlignment="Top" Width="76" Click="Show_Click" MouseEnter="Show_MouseEnter" MouseLeave="Show_MouseLeave" IsDefault="True"/>
 
-        <DataGrid x:Name="DataGrid" Margin="474,71,261,156"/>
-        <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="10,10,0,0" VerticalAlignment="Top" Width="534" FontSize="14"/>
+        <DataGrid x:Name="DataGrid" Margin="598,71,137,156">
+            <DataGrid.Background>
+                <SolidColorBrush Color="#FFECE9E9" Opacity="0.5"/>
+            </DataGrid.Background>
+        </DataGrid>
+        <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="102,71,0,0" VerticalAlignment="Top" Width="534" FontSize="16" FontWeight="Bold" FontFamily="Malgun Gothic Semilight"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="102,156,0,0" VerticalAlignment="Top" Width="120">
             <TextBlock><Run Text="ББИ161"/></TextBlock>
             <TextBlock><Run Text="ББИ162"/></TextBlock>
@@ -24,10 +30,10 @@
             <TextBlock><Run Text="ББИ168"/></TextBlock>
         </ComboBox>
         <Label Content="Группа" HorizontalAlignment="Left" Margin="102,125,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Add" Content="Добавить студента" HorizontalAlignment="Left" Margin="102,247,0,0" VerticalAlignment="Top" Width="120" Height="23" Click="Add_Click" MouseEnter="Add_MouseEnter" MouseLeave="Add_MouseLeave"/>
-        <Button x:Name="Delete" Content="Удалить студента" HorizontalAlignment="Left" Margin="103,298,0,0" VerticalAlignment="Top" Width="119" Click="Delete_Click" MouseEnter="Delete_MouseEnter" MouseLeave="Delete_MouseLeave"/>
-        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="835,15,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsCancel="True"/>
-        <Button x:Name="SaveChanges" Content="Сохранить Изменения" HorizontalAlignment="Left" Margin="762,614,0,0" VerticalAlignment="Top" Width="148" Click="SaveChanges_Click" IsEnabled="False">
+        <Button x:Name="Add" Content="Добавить студента" HorizontalAlignment="Left" Margin="102,247,0,0" VerticalAlignment="Top" Width="136" Height="23" Click="Add_Click" MouseEnter="Add_MouseEnter" MouseLeave="Add_MouseLeave"/>
+        <Button x:Name="Delete" Content="Удалить студента" HorizontalAlignment="Left" Margin="103,296,0,0" VerticalAlignment="Top" Width="135" Click="Delete_Click" MouseEnter="Delete_MouseEnter" MouseLeave="Delete_MouseLeave" Height="22"/>
+        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="959,46,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsCancel="True" MouseEnter="Exit_MouseEnter" MouseLeave="Exit_MouseLeave"/>
+        <Button x:Name="SaveChanges" Content="Сохранить Изменения" HorizontalAlignment="Left" Margin="886,599,0,0" VerticalAlignment="Top" Width="148" Click="SaveChanges_Click" IsEnabled="False">
             <Button.Style>
                 <Style TargetType="Button" >
                     <Style.Triggers>
@@ -36,9 +42,9 @@
                             <Setter Property="BorderBrush" Value="Olive" />
                         </Trigger>
                         <Trigger Property="Control.IsMouseOver" Value="True">
-                            <Setter Property="Control.Foreground" Value="LightYellow" />
+                            <Setter Property="Control.Foreground" Value="DarkGoldenrod" />
                             <Setter Property="Control.FontWeight" Value="Bold" />
-                            <Setter Property="BorderBrush" Value="Aquamarine" />
+                            <Setter Property="BorderBrush" Value="Green" />
                         </Trigger>
                         <Trigger Property="Button.IsPressed" Value="True">
                             <Setter Property="Control.Foreground" Value="Green" />
@@ -50,11 +56,11 @@
         </Button>
         <Button x:Name="Search" Content="Поиск" HorizontalAlignment="Left" Margin="102,575,0,0" VerticalAlignment="Top" Width="118" Click="Search_Click" MouseEnter="Search_MouseEnter" MouseLeave="Search_MouseLeave"/>
         <Label Content="Данные студента для поиска" HorizontalAlignment="Left" Margin="102,373,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label x:Name="label" Content="Оценка по программированию:" HorizontalAlignment="Left" Margin="102,501,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Оценка" HorizontalAlignment="Left" Margin="102,501,0,0" VerticalAlignment="Top"/>
         <Label Content="ФИО" HorizontalAlignment="Left" Margin="102,409,0,0" VerticalAlignment="Top" Width="136"/>
         <TextBox x:Name="FIO" HorizontalAlignment="Left" Height="24" Margin="102,435,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336"/>
         <Label x:Name="LabelUnderFIO" Content="При отсутствии отчества у студента пишите &quot;-&quot;" HorizontalAlignment="Left" Margin="102,462,0,0" VerticalAlignment="Top" Width="336" FontSize="8" MouseEnter="Label_MouseEnter" MouseLeave="LabelUnderFIO_MouseLeave"/>
-        <ComboBox x:Name="Mark" HorizontalAlignment="Left" Margin="310,505,0,0" VerticalAlignment="Top" Width="48">
+        <ComboBox x:Name="Mark" HorizontalAlignment="Left" Margin="172,505,0,0" VerticalAlignment="Top" Width="48">
             <TextBlock><Run Text="0"/></TextBlock>
             <TextBlock><Run Text="1"/></TextBlock>
             <TextBlock><Run Text="2"/></TextBlock>
@@ -67,7 +73,7 @@
             <TextBlock><Run Text="9"/></TextBlock>
             <TextBlock><Run Text="10"/></TextBlock>
         </ComboBox>
-        <Button x:Name="Del" Content="Удалить" HorizontalAlignment="Left" Margin="481,614,0,0" VerticalAlignment="Top" Width="75" Click="Del_Click" MouseEnter="Del_MouseEnter">
+        <Button x:Name="Del" Content="Удалить" HorizontalAlignment="Left" Margin="598,604,0,0" VerticalAlignment="Top" Width="75" Click="Del_Click" MouseEnter="Del_MouseEnter" MouseLeave="Del_MouseLeave">
             <Button.Style>
                 <Style TargetType="Button" >
                     <Style.Triggers>
@@ -88,6 +94,11 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="History" Content="История изменений" HorizontalAlignment="Left" Margin="762,675,0,0" VerticalAlignment="Top" Width="148" Click="History_Click"/>
+        <Button x:Name="History" Content="История изменений" HorizontalAlignment="Left" Margin="886,641,0,0" VerticalAlignment="Top" Width="148" Click="History_Click" Height="26" MouseEnter="History_MouseEnter" MouseLeave="History_MouseLeave"/>
+        <Label Content="Система оценивания студентов" HorizontalAlignment="Left" Margin="103,10,0,0" VerticalAlignment="Top" Width="494" FontSize="30" FontFamily="Malgun Gothic Semilight" FontWeight="Bold">
+            <Label.Background>
+                <SolidColorBrush Color="#FFF3E4A0" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
     </Grid>
 </Page>

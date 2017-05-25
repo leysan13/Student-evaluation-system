@@ -5,13 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
       mc:Ignorable="d"
-      Title="Entrance" Width="448.5" Height="360" 
+      Title="Entrance" Width="448.5" Height="360"  
       >
-   
-    <Grid HorizontalAlignment="Left" Width="448">
 
-        <TextBox x:Name="LoginText" HorizontalAlignment="Left" Height="25" Margin="152,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168"/>
-        <Button x:Name="Login" Content="Войти" HorizontalAlignment="Left" Margin="152,125,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Login_Click" IsDefault="True" Foreground="#FFFCFFFD" BorderBrush="#FF857272" MouseEnter="Login_MouseEnter" MouseLeave="Login_MouseLeave">
+    <Grid HorizontalAlignment="Left" Width="448">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="296*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Images/obraz.jpg" Grid.RowSpan="2"></Image>
+        <TextBox x:Name="LoginText" HorizontalAlignment="Left" Height="26" Margin="228,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Grid.Row="1" GotFocus="LoginText_GotFocus" Background="White" />
+        <Button x:Name="Login" Content="Войти" HorizontalAlignment="Left" Margin="228,144,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Login_Click" IsDefault="True" Foreground="#FFFCFFFD" BorderBrush="#FF857272" MouseEnter="Login_MouseEnter" MouseLeave="Login_MouseLeave" Grid.Row="1">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Black" Offset="0"/>
@@ -19,7 +23,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="Register" Content="Регистрация" HorizontalAlignment="Left" Margin="152,181,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Register_Click" Foreground="#FFFFEFEF" MouseEnter="Register_MouseEnter" MouseLeave="Register_MouseLeave">
+        <Button x:Name="Register" Content="Регистрация" HorizontalAlignment="Left" Margin="228,187,0,0" VerticalAlignment="Top" Width="168" Height="38" Click="Register_Click" Foreground="#FFFFEFEF" MouseEnter="Register_MouseEnter" MouseLeave="Register_MouseLeave" Grid.Row="1">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Black" Offset="0"/>
@@ -27,8 +31,12 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Label Content="Логин:" HorizontalAlignment="Left" Height="25" Margin="71,51,0,0" VerticalAlignment="Top" Width="67" Cursor="None"/>
-        <Label Content="Пароль:" HorizontalAlignment="Left" Height="25" Margin="71,81,0,0" VerticalAlignment="Top" Width="67"/>
-        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="152,81,0,0" VerticalAlignment="Top" Height="25" Width="168"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Right" Margin="0,61,52,0" VerticalAlignment="Top" Height="26" Width="168" Grid.Row="1" />
+        <Label Content="Введите логин и пароль:" HorizontalAlignment="Left" Margin="228,64,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Width="168">
+            <Label.Background>
+                <SolidColorBrush Color="#FFEED7D7" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
+
     </Grid>
 </Page>

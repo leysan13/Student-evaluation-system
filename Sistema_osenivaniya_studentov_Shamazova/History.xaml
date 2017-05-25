@@ -5,13 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
       mc:Ignorable="d"
-      Title="History" Width="786.893" Height="483.505">
+      Title="History" Width="1587.893" Height="942.505">
 
-    <Grid Margin="0,0,10,0">
-        <Button x:Name="GoBack" Content="Назад" HorizontalAlignment="Left" Margin="692,10,0,0" VerticalAlignment="Top" Width="75" Click="GoBack_Click"/>
-        <ListBox x:Name="listbox" HorizontalAlignment="Left" Height="247" Margin="10,71,0,0" VerticalAlignment="Top" Width="757"/>
-        <Button x:Name="DeleteChanges" Content="Отменить изменение" HorizontalAlignment="Left" Margin="593,328,0,0" VerticalAlignment="Top" Width="174" Click="DeleteChanges_Click"/>
-        <Label Content="10 последних изменений:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="160"/>
+    <Grid Margin="105,0,10,45">
+        <Image Source="/Images/shar.jpg" Margin="-125,-75,52,10"></Image>
+        <Button x:Name="GoBack" Content="Назад" HorizontalAlignment="Left" Margin="1001,139,0,0" VerticalAlignment="Top" Width="75" Click="GoBack_Click"/>
+        <ListBox x:Name="listbox" HorizontalAlignment="Left" Height="247" Margin="319,244,0,0" VerticalAlignment="Top" Width="757"/>
+        <Button x:Name="DeleteChanges" Content="Отменить изменение" HorizontalAlignment="Left" Margin="902,553,0,0" VerticalAlignment="Top" Width="174" Click="DeleteChanges_Click" BorderBrush="#FFB22626" OpacityMask="#FF918181" Background="#FFD1BB32">
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF952323" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+        <Label Content="10 последних изменений:" HorizontalAlignment="Left" Margin="319,171,0,0" VerticalAlignment="Top" Width="160" Foreground="#FFF0F0F0"/>
 
     </Grid>
 </Page>

@@ -39,8 +39,6 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             //win.Content = new Entrance();
             //win.ShowsNavigationUI = false;
             //win.Show();
-            //string path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName("../../obraz.bmp"));
-            //Background = new ImageBrush(new BitmapImage(new Uri(path)));
             // Close();
 
 

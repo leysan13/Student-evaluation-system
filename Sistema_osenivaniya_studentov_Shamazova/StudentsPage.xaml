@@ -9,8 +9,13 @@
       Title="StudentsPage" Width="550">
 
     <Grid HorizontalAlignment="Left" Width="540" Height="400" VerticalAlignment="Top" Margin="10,0,0,0">
-        <Label x:Name="StudentName" Content="Label" HorizontalAlignment="Left" Margin="20,29,0,0" VerticalAlignment="Top" Width="341"/>
-        <DataGrid x:Name="Datagrid" HorizontalAlignment="Center" Margin="20,92,200,249" VerticalAlignment="Center" Height="59" Width="320" IsEnabled="False"/>
-        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="407,32,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsDefault="True" IsCancel="True"/>
+        <Image Source="/Images/albert.jpg" Margin="-368,0,-288,-282"></Image>
+        <Label x:Name="StudentName" Content="Label" HorizontalAlignment="Left" Margin="62,91,0,0" VerticalAlignment="Top" Width="384" Foreground="#FFEAFF18" FontSize="16" FontFamily="Malgun Gothic Semilight">
+            <Label.Background>
+                <SolidColorBrush Color="#FFC3ABA0" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
+        <DataGrid x:Name="Datagrid" HorizontalAlignment="Center" Margin="62,162,158,179" VerticalAlignment="Center" Height="59" Width="320" IsEnabled="False" Opacity="0.8"/>
+        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="407,32,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsDefault="True" IsCancel="True" MouseEnter="Exit_MouseEnter" MouseLeave="Exit_MouseLeave"/>
     </Grid>
 </Page>

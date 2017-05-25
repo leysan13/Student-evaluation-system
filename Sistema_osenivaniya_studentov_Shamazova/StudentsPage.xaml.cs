@@ -48,5 +48,15 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             StudentName.Content = "";
             NavigationService.Navigate(new Entrance());
         }
+
+        private void Exit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Exit.FontSize += 2;
+        }
+
+        private void Exit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Exit.FontSize -= 2;
+        }
     }
 }

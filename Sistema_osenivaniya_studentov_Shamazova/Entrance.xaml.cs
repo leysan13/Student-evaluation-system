@@ -27,7 +27,6 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         public Entrance()
         {
             InitializeComponent();
-            LoginText.Focus();
             LoginText.TabIndex = 0;
             Password.TabIndex = 1;
         }
@@ -85,5 +84,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             Register.Foreground = SystemColors.ControlLightBrush;
         }
+
+        private void LoginText_GotFocus(object sender, RoutedEventArgs e)
+        {
+            LoginText.Clear();
+        }
+
     }
 }
