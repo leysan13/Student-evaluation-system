@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_osenivaniya_studentov_Shamazova
 {
+    [Serializable]
    public class HistoryOfChanges
     {
         

@@ -65,5 +65,25 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         {
             NavigationService.Navigate(new RegistrationPage());
         }
+
+        private void Login_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Login.Foreground = SystemColors.ControlDarkDarkBrush;
+        }
+
+        private void Login_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Login.Foreground = SystemColors.ControlLightBrush;
+        }
+
+        private void Register_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Register.Foreground = SystemColors.ControlDarkDarkBrush;
+        }
+
+        private void Register_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Register.Foreground = SystemColors.ControlLightBrush;
+        }
     }
 }

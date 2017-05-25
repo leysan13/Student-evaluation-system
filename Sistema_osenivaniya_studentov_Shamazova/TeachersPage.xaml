@@ -9,10 +9,10 @@
 
 
     <Grid Margin="61,10,65,0" Height="732" VerticalAlignment="Top" >
-        <Button x:Name="Show" Content="Показать" HorizontalAlignment="Left" Margin="103,183,0,0" VerticalAlignment="Top" Width="76" Click="Show_Click" MouseEnter="Show_MouseEnter" MouseLeave="Show_MouseLeave"/>
+        <Button x:Name="Show" Content="Показать" HorizontalAlignment="Left" Margin="103,183,0,0" VerticalAlignment="Top" Width="76" Click="Show_Click" MouseEnter="Show_MouseEnter" MouseLeave="Show_MouseLeave" IsDefault="True"/>
 
-        <DataGrid x:Name="DataGrid" Margin="481,80,254,147"/>
-        <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="47,24,0,0" VerticalAlignment="Top" Width="534" FontSize="14"/>
+        <DataGrid x:Name="DataGrid" Margin="474,71,261,156"/>
+        <Label x:Name="Prepod" Content="Label" HorizontalAlignment="Left" Height="56" Margin="10,10,0,0" VerticalAlignment="Top" Width="534" FontSize="14"/>
         <ComboBox x:Name="Group" HorizontalAlignment="Left" Margin="102,156,0,0" VerticalAlignment="Top" Width="120">
             <TextBlock><Run Text="ББИ161"/></TextBlock>
             <TextBlock><Run Text="ББИ162"/></TextBlock>
@@ -26,7 +26,7 @@
         <Label Content="Группа" HorizontalAlignment="Left" Margin="102,125,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Add" Content="Добавить студента" HorizontalAlignment="Left" Margin="102,247,0,0" VerticalAlignment="Top" Width="120" Height="23" Click="Add_Click" MouseEnter="Add_MouseEnter" MouseLeave="Add_MouseLeave"/>
         <Button x:Name="Delete" Content="Удалить студента" HorizontalAlignment="Left" Margin="103,298,0,0" VerticalAlignment="Top" Width="119" Click="Delete_Click" MouseEnter="Delete_MouseEnter" MouseLeave="Delete_MouseLeave"/>
-        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="835,29,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsCancel="True"/>
+        <Button x:Name="Exit" Content="Выйти" HorizontalAlignment="Left" Margin="835,15,0,0" VerticalAlignment="Top" Width="75" Click="Exit_Click" IsCancel="True"/>
         <Button x:Name="SaveChanges" Content="Сохранить Изменения" HorizontalAlignment="Left" Margin="762,614,0,0" VerticalAlignment="Top" Width="148" Click="SaveChanges_Click" IsEnabled="False">
             <Button.Style>
                 <Style TargetType="Button" >

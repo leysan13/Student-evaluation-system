@@ -59,7 +59,24 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         Students st = (Students)student.User;
                         if ((mas[0] == st.Sername) && (mas[1] == st.Name) && (mas[2] == st.Patronymic) && (Group.Text == st.Group))
                         {
-                            //P.AddHistoryChange(student, null);
+                            Object stud = new Students("-1", "-1", "-1", "-1", "-1", -1);
+                            Authorization x = new Authorization("-1", "-1", stud);
+                            HistoryOfChanges hist = new HistoryOfChanges(student,x);
+                            P.History.Add(hist);
+                            P.MakeIt10();
+                            foreach (Authorization X in list)
+                            {
+                                try
+                                {
+                                    Teacher te = (Teacher)X.User;
+                                    if (P.Name == te.Name && P.Sername == te.Sername && P.Subject == te.Subject && P.Patronymic == te.Patronymic)
+                                    {
+
+                                        te.History = P.History;
+                                    }
+                                }
+                                catch { }
+                            }
                             list.Remove(student);
                             ser.Serialize(list);
                             MessageBox.Show("Удаление завершено", "-", MessageBoxButton.OK);

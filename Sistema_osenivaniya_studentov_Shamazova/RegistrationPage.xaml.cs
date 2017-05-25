@@ -65,7 +65,14 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         }
                     }
                     var hash = CalculateHash(Password.Text);
-                    list.Add(new Authorization(Login.Text, hash, new Teacher(Sername.Text, Name.Text, Patronymic.Text, Subject.Text)));
+                    Teacher t = new Teacher(Sername.Text, Name.Text, Patronymic.Text, Subject.Text);
+                    Students s = new Students("-1", "-1", "-1", "-1", t.Subject, -1);
+                    t.History = new List<HistoryOfChanges>();
+                    Authorization aut = new Authorization("-1", "-1", s);
+                    HistoryOfChanges hist = new HistoryOfChanges(aut, aut);
+                    t.History.Add(hist);
+                    Authorization a = new Authorization(Login.Text, hash,t);
+                    list.Add(a);
                     ser.Serialize(list);
                     MessageBox.Show("Регистрация прошла успешно!", "", MessageBoxButton.OK);
 

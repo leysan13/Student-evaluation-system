@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_osenivaniya_studentov_Shamazova"
         mc:Ignorable="d"
+
+        Background="Azure"
         Title="Entrance" Height="779.5" Width="1020.5" WindowStartupLocation="CenterScreen">
+
     <Grid>
+    
+        
         <Frame Name="frameMain" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

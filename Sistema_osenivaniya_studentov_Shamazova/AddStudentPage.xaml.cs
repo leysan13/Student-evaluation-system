@@ -23,6 +23,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
     {
         public AddStudentPage(Teacher id)
         {
+            P = id;
             InitializeComponent();
             label.Content = "Оценка по предмету '" + id.Subject + "'";
             subject = id.Subject;
@@ -33,6 +34,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
             Login.TabIndex = 3;
             Password.TabIndex = 4;
         }
+        Teacher P;
         private string CalculateHash(string password)
         {
             MD5 md5 = MD5.Create();
@@ -103,6 +105,24 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                         }
                         catch { }
                     }
+                }
+                Object stud = new Students("-1", "-1", "-1", "-1", "-1", -1);
+                Authorization aut = new Authorization("-1", "-1", stud);
+                HistoryOfChanges hist = new HistoryOfChanges(aut,Leysan);
+                P.History.Add(hist);
+                P.MakeIt10();
+                foreach (Authorization X in list)
+                {
+                    try
+                    {
+                        Teacher t = (Teacher)X.User;
+                        if (P.Name == t.Name && P.Sername == t.Sername && P.Subject == t.Subject && P.Patronymic == t.Patronymic)
+                        {
+
+                            t.History = P.History;
+                        }
+                    }
+                    catch { }
                 }
                 ser.Serialize(list);
                 MessageBox.Show("Студент добавлен", "-", MessageBoxButton.OK);

@@ -163,8 +163,8 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (P == null) { NavigationService.Navigate(new Entrance()); return; }
                 Serialization ser = new Serialization();
                 List<Authorization> list = ser.Deserialize();
@@ -254,83 +254,148 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     {
                         MessageBox.Show("ФИО должны быть записаны буквами", "!", MessageBoxButton.OK, MessageBoxImage.Exclamation); return;
                     }
-                    //int _mark;
-                    //switch (P.Subject)
-                    //{
-                    //    case "Программирование":
-                    //        _mark=listOfStudents[i].marks.Programming;
-                    //        break;
-                    //    case "Экономика":
-                    //        _mark=listOfStudents[i].marks.Economics;
-                    //        break;
-                    //    case "Математический анализ":
-                    //        _mark=listOfStudents[i].marks.Mathematical_analysis;
-                    //        break;
-                    //    default:
-                    //        _mark = 0;
-                    //        break;
-                    //}
-                    //Authorization StudentBefore;
-                    //Authorization StudentAfter;
-                    //if (listOfStudents[i].Name!=arj[i].Name||listOfStudents[i].Sername!=arj[i].Sername||listOfStudents[i].Patronymic!=arj[i].Patronymic||listOfStudents[i].Group!=arj[i].Group||mark!=arj[i].Mark)
-                    //{
-                    //    try
-                    //    {
-                    //        foreach (Authorization x in list)
-                    //        {
-                    //            Students s = (Students)x.User;
-                    //            if (listOfStudents[i] == s)
-                    //            {
-                    //                StudentBefore = x;
-                    //                Students st = new Students(arj[i].Sername, arj[i].Name, arj[i].Patronymic, arj[i].Group, P.Subject, arj[i].Mark);
-                    //                switch (P.Subject)
-                    //                {
-                    //                    case "Программирование":
-                    //                        st.marks.Economics = s.marks.Economics;
-                    //                        st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
-                    //                        break;
-                    //                    case "Экономика":
-                    //                        st.marks.Programming = s.marks.Programming;
-                    //                        st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
-                    //                        break;
-                    //                    case "Математический анализ":
-                    //                        st.marks.Programming = s.marks.Programming;
-                    //                        st.marks.Economics = s.marks.Economics;
-                    //                        break;
-                    //                    default:
-
-                    //                        break;
-                    //                }
-                    //                StudentAfter = new Authorization(x.Login, x.Password, st);
-                    //                P.AddHistoryChange(StudentBefore, StudentAfter);
-                    //            }
-                                
-                    //        }
-
-                    //    }
-                    //    catch
-                    //    {
-                    //    }
-                    //}
-
-                    listOfStudents[i].Name = arj[i].Name;
-                    listOfStudents[i].Sername = arj[i].Sername;
-                    listOfStudents[i].Patronymic = arj[i].Patronymic;
-                    listOfStudents[i].Group = arj[i].Group;
+                    int _mark;
                     switch (P.Subject)
                     {
                         case "Программирование":
-                            listOfStudents[i].marks.Programming = arj[i].Mark;
+                            _mark = listOfStudents[i].marks.Programming;
                             break;
                         case "Экономика":
-                            listOfStudents[i].marks.Economics = arj[i].Mark;
+                            _mark = listOfStudents[i].marks.Economics;
                             break;
                         case "Математический анализ":
-                            listOfStudents[i].marks.Mathematical_analysis = arj[i].Mark;
+                            _mark = listOfStudents[i].marks.Mathematical_analysis;
                             break;
                         default:
+                            _mark = 0;
                             break;
                     }
+                    Authorization StudentBefore;
+                    Authorization StudentAfter;
+                    if (listOfStudents[i].Name != arj[i].Name || listOfStudents[i].Sername != arj[i].Sername || listOfStudents[i].Patronymic != arj[i].Patronymic || listOfStudents[i].Group != arj[i].Group || _mark != arj[i].Mark)
+                    {
+                        
+                            for (int x=0; x< list.Count; x++)
+                            {
+                            try
+                            {
+                                Students s = (Students)list[x].User;
+                                if (listOfStudents[i] == s)
+                                {
+                                    StudentBefore = list[x];
+                                    Students st = new Students(arj[i].Sername, arj[i].Name, arj[i].Patronymic, arj[i].Group, P.Subject, arj[i].Mark);
+                                    switch (P.Subject)
+                                    {
+                                        case "Программирование":
+                                            st.marks.Economics = s.marks.Economics;
+                                            st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
+                                            break;
+                                        case "Экономика":
+                                            st.marks.Programming = s.marks.Programming;
+                                            st.marks.Mathematical_analysis = s.marks.Mathematical_analysis;
+                                            break;
+                                        case "Математический анализ":
+                                            st.marks.Programming = s.marks.Programming;
+                                            st.marks.Economics = s.marks.Economics;
+                                            break;
+                                        default:
+
+                                            break;
+                                    }
+                                    StudentAfter = new Authorization(list[x].Login, list[x].Password, st);
+                                    HistoryOfChanges hist = new HistoryOfChanges(StudentBefore, StudentAfter);
+                                    P.History.Add(hist);
+                                    P.MakeIt10();
+                                list.Remove(StudentBefore);
+                                list.Add(StudentAfter);
+
+                                //int g=-1;
+                                //for(int h=0; h<list.Count; h++)
+                                //{
+                                //    try
+                                //    {
+
+                                //        Students stud = (Students)list[i].User;
+                                //        Students stu = StudentBefore.User as Students;
+                                //        if (stud.Name == stu.Name && stud.Sername == stu.Sername && stud.Group == stu.Group && stud.Patronymic == stu.Patronymic)
+                                //        {
+
+                                //            g = h;
+
+                                //        }
+                                //    }
+                                //    catch { }
+                                //}
+                                //if (g==-1)
+                                //{
+                                //    MessageBox.Show("Всё плохо");
+                                //    return;
+                                //}
+
+                                foreach (Authorization X in list)
+                                    {
+                                        try
+                                        {
+                                            Teacher te = (Teacher)X.User;
+                                            if (P.Name == te.Name && P.Sername == te.Sername && P.Subject == te.Subject && P.Patronymic == te.Patronymic)
+                                            {
+
+                                                te.History = P.History;
+
+                                            }
+                                        }
+                                        catch { }
+                                    }
+
+
+                            }
+
+                            }
+                            catch
+                            {
+                            }
+
+                        }
+                
+                }
+
+                   
+                    int pr = listOfStudents[i].marks.Programming, ec = listOfStudents[i].marks.Economics, ma = listOfStudents[i].marks.Mathematical_analysis;
+                    listOfStudents[i] = new Students(arj[i].Sername, arj[i].Name, arj[i].Patronymic, arj[i].Group, P.Subject, arj[i].Mark);
+                    switch (P.Subject)
+                    {
+                        case "Программирование":
+                            listOfStudents[i].marks.Mathematical_analysis = ma;
+                            listOfStudents[i].marks.Economics = ec;
+                            break;
+                        case "Экономика":
+                            listOfStudents[i].marks.Programming = pr;
+                            listOfStudents[i].marks.Mathematical_analysis = ma;
+                            break;
+                        case "Математический анализ":
+                            listOfStudents[i].marks.Programming = pr;
+                            listOfStudents[i].marks.Economics = ec;
+                            break;
+                    }
+                    
+                //    listOfStudents[i].Name = arj[i].Name;
+                //    listOfStudents[i].Sername = arj[i].Sername;
+                //    listOfStudents[i].Patronymic = arj[i].Patronymic;
+                //    listOfStudents[i].Group = arj[i].Group;
+                //    switch (P.Subject)
+                //    {
+                //        case "Программирование":
+                //            listOfStudents[i].marks.Programming = arj[i].Mark;
+                //            break;
+                //        case "Экономика":
+                //            listOfStudents[i].marks.Economics = arj[i].Mark;
+                //            break;
+                //        case "Математический анализ":
+                //            listOfStudents[i].marks.Mathematical_analysis = arj[i].Mark;
+                //            break;
+                //        default:
+                //            break;
+                //    }
                 }
                 List<string> sername = new List<string>();
                 Authorization a;
@@ -362,11 +427,11 @@ namespace Sistema_osenivaniya_studentov_Shamazova
                     }
                 }
                 ser.Serialize(list);
-            }
-            catch 
-            {
-                MessageBox.Show("Произошла ошибка, возможно, Вы неккоректно ввели данные","Ошибка", MessageBoxButton.OK,MessageBoxImage.Error);
-            }
+            //}
+            //catch 
+            //{
+            //    MessageBox.Show("Произошла ошибка, возможно, Вы неккоректно ввели данные","Ошибка", MessageBoxButton.OK,MessageBoxImage.Error);
+            //}
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -378,15 +443,47 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         }
 
         private void Show_Click(object sender, RoutedEventArgs e)
-        {
+           {
+        
             if (P == null) { NavigationService.Navigate(new Entrance()); return; }
             if (Group.Text == "")
             {
                 MessageBox.Show("Выберите группу!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
+            List<Authorization> list = new List<Authorization>();
+            Serialization ser = new Serialization();
+            list = ser.Deserialize();
+            //List<string> sername = new List<string>();
+            //Authorization a;
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    try
+            //    {
+            //        Students st = (Students)list[i].User;
+            //        sername.Add(st.Sername);
+            //    }
+            //    catch { }
+            //}
+            //sername.Sort();
+            //for (int i = 0; i < sername.Count; i++)
+            //{
+            //    for (int j = 0; j < list.Count; j++)
+            //    {
+            //        try
+            //        {
+            //            Students st = (Students)list[j].User;
+            //            if (st.Sername == sername[i])
+            //            {
+            //                a = list[j];
+            //                list[j] = list[i];
+            //                list[i] = a;
+            //            }
+            //        }
+            //        catch { }
+            //    }
+            //}
             arj.Clear();
-            List<Authorization> list = new Serialization().Deserialize();
             foreach (Authorization el in list)
             {
                 try
@@ -439,57 +536,74 @@ namespace Sistema_osenivaniya_studentov_Shamazova
         }
           private void Del_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            int selectedindex = DataGrid.SelectedIndex;
-            if (selectedindex == -1)
 
+            try
             {
-                MessageBox.Show("Для удаления нужно что-то выбрать");
-            }
-            else
-            {
+                int selectedindex = DataGrid.SelectedIndex;
+                if (selectedindex == -1)
 
-                Serialization ser = new Serialization();
+                {
+                    MessageBox.Show("Для удаления нужно что-то выбрать");
+                }
+                else
+                {
+
+                    Serialization ser = new Serialization();
                     List<Authorization> list = ser.Deserialize();
-               
-                List<int> index = new List<int>();
+
+                    List<int> index = new List<int>();
                     for (int i = 0; i < list.Count; i++)
                     {
-                    try
-                    {
-                        Students s = list[i].User as Students;
-                        foreach (var row in DataGrid.SelectedItems)
+                        try
                         {
-                            Student st = row as Student;
-                            if (st.Sername==s.Sername&&st.Name==s.Name&&s.Group==st.Group&&st.Patronymic==s.Patronymic)
+                            Students s = list[i].User as Students;
+                            foreach (var row in DataGrid.SelectedItems)
                             {
-                            //    Object stud = new Students("-", "-", "-", "-", "-", 0);
-                            //    Authorization x = new Authorization("-", "-", stud);
-                            //    P.AddHistoryChange(list[i], x);
-                                arj.Remove(st);
-                                index.Add(i);
-                                break;
+                                Student st = row as Student;
+                                if (st.Sername == s.Sername && st.Name == s.Name && s.Group == st.Group && st.Patronymic == s.Patronymic)
+                                {
+                                    Object stud = new Students("-1", "-1", "-1", "-1", "-1", -1);
+                                    Authorization x = new Authorization("-1", "-1", stud);
+                                    HistoryOfChanges hist = new HistoryOfChanges(list[i], x);
+                                    P.History.Add(hist);
+                                    P.MakeIt10();
+                                    foreach (Authorization X in list)
+                                    {
+                                        try
+                                        {
+                                            Teacher te = (Teacher)X.User;
+                                            if (P.Name == te.Name && P.Sername == te.Sername && P.Subject == te.Subject && P.Patronymic == te.Patronymic)
+                                            {
+
+                                                te.History = P.History;
+                                            }
+                                        }
+                                        catch { }
+                                    }
+                                    arj.Remove(st);
+                                    index.Add(i);
+                                    break;
+                                }
+
                             }
-                            
+
                         }
+                        catch
+                        {
 
+                        }
                     }
-                    catch
+                    for (int i = 0; i < index.Count; i++)
                     {
-
+                        list.RemoveAt(index[i]);
                     }
-                }
-                for (int i = 0; i < index.Count; i++)
-                {
-                    list.RemoveAt(index[i]);
-                }
-                DataGrid.ItemsSource = null;
+                    DataGrid.ItemsSource = null;
                     DataGrid.ItemsSource = arj;
-                   
+
                     ser.Serialize(list);
 
-            }
+                }
+            }catch { MessageBox.Show("Что-то пошло не так.. Попробуйте удалить данные в отдельном окне.","Ошибка", MessageBoxButton.OK,MessageBoxImage.Error); }
 
             }
 
@@ -553,6 +667,7 @@ namespace Sistema_osenivaniya_studentov_Shamazova
 
         private void History_Click(object sender, RoutedEventArgs e)
         {
+            DataGrid.ItemsSource = null;
             NavigationService.Navigate(new History(P));
         }
     }
